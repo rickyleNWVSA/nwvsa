@@ -10,11 +10,16 @@
    ───────────────────────────────────────────────────────────── */
 
 .flipbook-stage {
+  /* Book dimensions live here so the leaves and the "open cover" offset
+     all scale together. Bump these to grow the whole book. */
+  --book-w: 380px;
+  --book-h: 580px;
+
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 560px;
-  perspective: 2000px;
+  min-height: calc(var(--book-h) + 40px);
+  perspective: 2400px;
 }
 
 /* Hidden checkboxes that drive the flips.
@@ -24,8 +29,8 @@
 }
 
 .flipbook {
-  width: 298px;
-  height: 420px;
+  width: var(--book-w);
+  height: var(--book-h);
   position: relative;
   transition-duration: 1s;
   perspective: 2000px;
@@ -42,7 +47,11 @@
   align-items: center;
   gap: 10px;
   border-radius: 2.5px 5px 5px 2.5px;
-  background: linear-gradient(135deg, #b3122f, #dc143c);
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cover-color, #dc143c) 72%, #000),
+    var(--cover-color, #dc143c)
+  );
   box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.25), 0 6px 18px rgba(0, 0, 0, 0.25);
   color: #fff;
   text-align: center;
@@ -68,6 +77,14 @@
   z-index: -1;
 }
 
+.cover-logo {
+  width: 42%;
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+}
+
 .cover-eyebrow {
   font-size: 12px;
   letter-spacing: 0.18em;
@@ -77,9 +94,10 @@
 
 .cover-title {
   font-family: var(--font-display, Georgia, serif);
-  font-size: 34px;
+  font-size: clamp(24px, 4vw, 32px);
   line-height: 1.1;
   font-weight: 600;
+  max-width: 90%;
 }
 
 .cover-hint {
@@ -90,8 +108,8 @@
 
 /* ── LEAVES (each physical page = a front face + a back face) ── */
 .leaf {
-  width: 288px;
-  height: 400px;
+  width: calc(var(--book-w) - 10px);
+  height: calc(var(--book-h) - 20px);
   position: absolute;
   top: 10px;
   left: 1px;
@@ -154,15 +172,6 @@
   z-index: 1;
 }
 
-/* ── OPEN THE COVER ──
-   Slide the whole book right so the open spread stays centered,
-   and swing the front cover open. */
-.flipbook-stage input#cover-toggle:checked ~ .flipbook {
-  transform: translateX(144px);
-}
-
-.flipbook-stage input#cover-toggle:checked ~ .flipbook .front-cover {
-  transform: rotateY(-180deg);
-  transition: transform 1.5s, z-index 0.5s 0.5s;
-  z-index: 1;
-}
+/* NOTE: the "open the cover" and per-leaf flip rules are generated per-instance
+   in FlipBook.jsx (scoped to each book's unique stage id) so that many books
+   can coexist on one page — e.g. inside the album carousel. */

@@ -1,0 +1,55 @@
+/* About page — the constituent-schools grid (the only About-specific section).
+   The about / goals / mission blocks it also uses are shared and live in
+   styles/sections.css. */
+
+.schools-section {
+  background: var(--off-white);
+  padding: 100px 24px;
+}
+
+.schools-header {
+  text-align: center;
+  max-width: 600px;
+  margin: 0 auto 60px;
+}
+
+.schools-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 12px;
+  max-width: 800px;
+  margin: 0 auto;
+  justify-items: center;
+}
+
+.school-chip {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 14px 16px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--dark);
+  font-weight: 400;
+  border: 1px solid transparent;
+  transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.school-chip:hover {
+  border-color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(212,168,83,0.15);
+}
+
+.school-chip .school-abbr {
+  font-size: 11px;
+  color: var(--mid-gray);
+  display: block;
+  margin-top: 3px;
+}

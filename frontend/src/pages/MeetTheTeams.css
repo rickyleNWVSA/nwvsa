@@ -1,13 +1,27 @@
-/* MeetTheTeams page — prototype shell around the FlipBook. */
+/* MeetTheTeams page — a single openable scrapbook with a Pacific Northwest,
+   evergreen feel. */
 
 .teams-page {
   min-height: 100dvh;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 40px 24px 80px;
-  background: var(--off-white, #f5f5f7);
+  padding: 40px 24px 120px;
   color: var(--dark, #1d1d1f);
+  /* Layered: a faint evergreen tree line along the bottom, a soft green glow up
+     top, and a misty green-to-sage gradient behind it all. */
+  background-image: url("data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='60'%20height='72'%20viewBox='0%200%2060%2072'%3E%3Cg%20fill='%232f5233'%20fill-opacity='0.14'%3E%3Cpath%20d='M30%204L50%2044L34%2044L48%2064L12%2064L26%2044L10%2044Z'/%3E%3Crect%20x='27'%20y='62'%20width='6'%20height='10'/%3E%3C/g%3E%3C/svg%3E"),
+    radial-gradient(120% 90% at 50% -10%, rgba(56, 118, 29, 0.18), transparent 55%),
+    linear-gradient(180deg, #eef4e8 0%, #dde9d1 52%, #cfe0c0 100%);
+  background-repeat: repeat-x, no-repeat, no-repeat;
+  background-position: bottom center, top center, center;
+  background-size: 72px auto, auto, auto;
+}
+
+/* Keep page content above the decorative tree line. */
+.teams-page > * {
+  position: relative;
+  z-index: 1;
 }
 
 .teams-back {
@@ -20,7 +34,7 @@
 
 .teams-head {
   text-align: center;
-  margin: 8px 0 28px;
+  margin: 8px 0 24px;
 }
 
 .teams-eyebrow {
@@ -35,6 +49,7 @@
   font-size: 46px;
   font-weight: 600;
   margin-top: 6px;
+  color: #1e3a24; /* deep forest */
 }
 
 .teams-hint {
@@ -43,23 +58,89 @@
   color: var(--mid-gray, #6e6e73);
 }
 
-/* ── Team card (one per page) ── */
-.team-card {
+/* ── Board tabs (switch which board the scrapbook shows) ── */
+.teams-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 8px;
+  margin-bottom: 24px;
+}
+
+.teams-tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(47, 82, 51, 0.22);
+  background: rgba(255, 255, 255, 0.82);
+  color: var(--mid-gray, #6e6e73);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 9px 16px;
+  border-radius: 999px;
+  cursor: pointer;
+  backdrop-filter: blur(2px);
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+.teams-tab-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--tab-color, #dc143c);
+  flex: none;
+}
+.teams-tab:hover {
+  border-color: var(--tab-color, #38761d);
+  color: var(--dark, #1d1d1f);
+}
+.teams-tab.is-active {
+  background: var(--tab-color, #38761d);
+  border-color: var(--tab-color, #38761d);
+  color: #fff;
+}
+.teams-tab.is-active .teams-tab-dot {
+  background: #fff;
+}
+
+/* ── The scrapbook ── */
+.teams-book {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ── Page holding up to two officers, stacked ── */
+.team-page {
   height: 100%;
   display: flex;
   flex-direction: column;
+}
+
+/* ── Team card (up to two per page) ── */
+.team-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
   text-align: center;
+  padding: 10px 0;
+}
+/* Divider between the two officers on a page. */
+.team-card + .team-card {
+  border-top: 1px solid var(--light-gray, #e8e8ee);
 }
 
 .team-photo {
-  width: 120px;
-  height: 120px;
+  width: 88px;
+  height: 88px;
   border-radius: 50%;
   overflow: hidden;
   background: var(--light-gray, #e8e8ee);
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.12);
-  margin-top: 8px;
+  flex: none;
 }
 .team-photo img {
   width: 100%;
@@ -68,7 +149,7 @@
 }
 
 .team-role {
-  margin-top: 16px;
+  margin-top: 12px;
   font-size: 11px;
   letter-spacing: 0.14em;
   text-transform: uppercase;
@@ -77,15 +158,22 @@
 
 .team-name {
   font-family: var(--font-display, Georgia, serif);
-  font-size: 24px;
+  font-size: 22px;
   font-weight: 600;
   margin-top: 4px;
 }
 
+.team-pronouns {
+  margin-top: 3px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--mid-gray, #6e6e73);
+}
+
 .team-blurb {
-  margin-top: 14px;
-  font-size: 13.5px;
-  line-height: 1.6;
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.55;
   font-weight: 300;
   color: var(--mid-gray, #6e6e73);
 }

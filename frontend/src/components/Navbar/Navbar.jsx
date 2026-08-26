@@ -1,44 +1,58 @@
 import { Link } from "react-router-dom";
 import "./Navbar.css";
+
 /*
  * Navbar — the site's top navigation bar.
  *
- * The section links (#about, #goals, …) are in-page scroll anchors for the
- * Home page, so they stay as plain <a href> — they jump to a section, they
- * don't change routes. If this navbar later appears on every page, swap the
- * logo/section links for react-router <Link> where they point to other pages.
+ * Link types used here, and why:
+ *   - Logo + "Meet the Team" use <Link> because they point to ROUTES (pages).
+ *     <Link> swaps pages client-side with no full reload.
+ *   - The "Explore" dropdown groups the section links. Since the homepage's
+ *     content moved onto dedicated pages, each item now points at the page +
+ *     section where that content lives (e.g. "/about#goals"). They stay <a> on
+ *     purpose so the browser navigates to the page and natively scrolls to the
+ *     hash target.
  */
+
 function Navbar() {
   return (
     <nav>
-      <a href="#" className="nav-logo">
+      <Link to="/" className="nav-logo">
         <img
           src="/images/nwvsa-logo-160x157-with-white-outline-150x150.webp"
           alt="NWVSA Logo"
           className="nav-logo-img"
         />
-      </a>
+      </Link>
+
       <ul className="nav-links">
-        <li>
-          <a href="#about">About</a>
-        </li>
-        <li>
-          <a href="#goals">Our Goals</a>
-        </li>
-        <li>
-          <a href="#schools">Schools</a>
-        </li>
-        <li>
-          <a href="#events">Events</a>
-        </li>
-        <li>
-          <a href="#donate">Donate</a>
-        </li>
         <li>
           <Link to="/teams">Meet the Team</Link>
         </li>
+
+        <li>
+          <Link to="/about">About</Link>
+        </li>
+        <li>
+          <Link to="/events">Events</Link>
+        </li>
+        <li>
+          <Link to="/cpp">CPP</Link>
+        </li>
+        <li>
+          <Link to="/opportunities">Opportunities</Link>
+        </li>
+        <li>
+          <Link to="/donations">Donations</Link>
+        </li>
       </ul>
-      <a href="#contact" className="nav-cta">
+
+      <a
+        href="https://northwestvsa.com/contact-us/"
+        target="_blank"
+        rel="noreferrer"
+        className="nav-cta"
+      >
         Contact Us
       </a>
     </nav>
