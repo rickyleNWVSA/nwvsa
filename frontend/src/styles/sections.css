@@ -217,6 +217,20 @@
   box-shadow: 0 20px 48px rgba(0,0,0,0.08);
 }
 
+.event-photo {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  object-fit: cover;
+}
+
+/* For a brand logo rather than a photo: contain it on a clean ground. */
+.event-photo--logo {
+  object-fit: contain;
+  padding: 28px;
+  background: var(--white);
+}
+
 .event-card-top {
   padding: 36px 32px 28px;
 }

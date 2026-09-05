@@ -24,7 +24,7 @@ function About() {
         style={{ background: "var(--off-white)", padding: "100px 24px" }}
       >
         <div className="section-wrap">
-          <div className="about reveal">
+          <div className="about reveal" style={{ alignItems: "start" }}>
             <div>
               <div className="section-eyebrow">Who We Are</div>
               <h2 className="section-title">
@@ -39,7 +39,19 @@ function About() {
                 where members feel valued and empowered through cultural
                 celebrations, leadership training, and volunteer initiatives.
               </p>
-              <div style={{ marginTop: "36px" }}>
+
+              {/* Mission statement, stacked under the About text */}
+              <div className="about-card" style={{ marginTop: "32px" }}>
+                <div className="about-card-accent"></div>
+                <p className="about-card-text">
+                  "Fostering experiential learning, cultural self-reflection,
+                  and relationship building for community development in and
+                  among our constituent schools."
+                </p>
+                <div className="about-card-footer">NWVSA Mission Statement</div>
+              </div>
+
+              <div style={{ marginTop: "32px" }}>
                 <a
                   href="https://northwestvsa.com/our-misson-values/"
                   target="_blank"
@@ -51,16 +63,15 @@ function About() {
                 </a>
               </div>
             </div>
+
+            {/* Photo on the right */}
             <div className="about-visual">
-              <div className="about-card">
-                <div className="about-card-accent"></div>
-                <p className="about-card-text">
-                  "Fostering experiential learning, cultural self-reflection,
-                  and relationship building for community development in and
-                  among our constituent schools."
-                </p>
-                <div className="about-card-footer">NWVSA Mission Statement</div>
-              </div>
+              <img
+                className="photo-frame"
+                src="/images/NWVSA_MissionValues_Photo.webp"
+                alt="NWVSA members celebrating on stage in áo dài"
+                loading="lazy"
+              />
               <div className="about-year-badge">Founded 2008</div>
             </div>
           </div>
@@ -136,23 +147,30 @@ function About() {
 
       {/* VISION */}
       <section style={{ background: "var(--white)", padding: "100px 24px" }}>
-        <div
-          className="section-wrap reveal"
-          style={{ maxWidth: "760px", textAlign: "center", margin: "0 auto" }}
-        >
-          <div className="section-eyebrow">Our Vision</div>
-          <h2 className="section-title" style={{ margin: "0 auto" }}>
-            Community & cultural empowerment through <em>shared leadership</em>
-          </h2>
-          <p className="section-body" style={{ margin: "20px auto 0" }}>
-            Rather than merely maintaining traditions, NWVSA builds platforms
-            where younger generations can embrace their identities
-            authentically. Through mentorship, teamwork, and transparent
-            discussion, we encourage individuals to step into leadership that
-            reflects their cultural background and distinct viewpoints —
-            developing a resilient, unified community ready to contribute
-            meaningfully to society.
-          </p>
+        <div className="about-split reveal">
+          <div>
+            <div className="section-eyebrow">Our Vision</div>
+            <h2 className="section-title">
+              Community & cultural empowerment through <em>shared leadership</em>
+            </h2>
+            <p className="section-body" style={{ marginTop: "20px" }}>
+              Rather than merely maintaining traditions, NWVSA builds platforms
+              where younger generations can embrace their identities
+              authentically. Through mentorship, teamwork, and transparent
+              discussion, we encourage individuals to step into leadership that
+              reflects their cultural background and distinct viewpoints —
+              developing a resilient, unified community ready to contribute
+              meaningfully to society.
+            </p>
+          </div>
+          <figure>
+            <img
+              className="photo-frame"
+              src="/images/NWVSA_Vision_Photo.webp"
+              alt="NWVSA members smiling together with peace signs"
+              loading="lazy"
+            />
+          </figure>
         </div>
       </section>
 
@@ -179,6 +197,17 @@ function About() {
             Associations across the Pacific Northwest.
           </p>
         </div>
+        <figure
+          className="media-band reveal"
+          style={{ marginBottom: "56px" }}
+        >
+          <img
+            className="photo-frame"
+            src="/images/NWVSA_Homepage_Funny.webp"
+            alt="The full NWVSA community posing together"
+            loading="lazy"
+          />
+        </figure>
         <div className="schools-grid reveal">
           <div className="school-chip">
             University of Washington, Seattle

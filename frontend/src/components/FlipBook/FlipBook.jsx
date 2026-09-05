@@ -89,10 +89,14 @@ export default function FlipBook({
         {/* FRONT COVER */}
         <div className="front-cover">
           <label htmlFor={`${id}-cover-toggle`} aria-label="Open book" />
-          {logo ? <img className="cover-logo" src={logo} alt="" /> : null}
-          <div className="cover-eyebrow">{subtitle}</div>
-          <h2 className="cover-title">{title}</h2>
-          <div className="cover-hint">Click to open ▸</div>
+          {/* Content sits on its own face that hides when the cover flips open,
+              so the title/logo never show up mirrored on the back. */}
+          <div className="cover-face">
+            {logo ? <img className="cover-logo" src={logo} alt="" /> : null}
+            <div className="cover-eyebrow">{subtitle}</div>
+            <h2 className="cover-title">{title}</h2>
+            <div className="cover-hint">Click to open ▸</div>
+          </div>
         </div>
 
         {/* LEAVES */}

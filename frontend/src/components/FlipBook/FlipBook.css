@@ -63,7 +63,19 @@
   cursor: pointer;
   transform-origin: center left;
   transition: transform 0.5s;
+  transform-style: preserve-3d;
   z-index: 99;
+}
+
+/* The cover's text/logo live on this face; hidden once the cover turns away so
+   they never appear mirrored on the open (inside) cover. */
+.cover-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  backface-visibility: hidden;
 }
 
 .front-cover label {

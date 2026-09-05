@@ -44,10 +44,6 @@ function Home() {
             Support Our Mission
           </Link>
         </div>
-        <div className="hero-scroll">
-          <span>Scroll</span>
-          <div className="scroll-line"></div>
-        </div>
       </section>
 
       {/* STAT BAR */}

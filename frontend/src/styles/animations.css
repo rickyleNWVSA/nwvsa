@@ -1,13 +1,11 @@
-/* Shared scroll-reveal animation, used by the marketing pages via the
-   useScrollReveal hook. (Page-specific keyframes live with their page.) */
+/* Scroll-reveal entrance animation is disabled site-wide: pages show their
+   content immediately, with no fade/slide-in when the user enters the page.
+   The home page is unaffected — its hero uses its own keyframe animations in
+   Home.css and has no .reveal elements. To re-enable the reveal, restore the
+   opacity/transform/transition on .reveal below. */
 
-.reveal {
-  opacity: 0;
-  transform: translateY(32px);
-  transition: opacity 0.7s ease, transform 0.7s ease;
-}
-
+.reveal,
 .reveal.visible {
   opacity: 1;
-  transform: translateY(0);
+  transform: none;
 }

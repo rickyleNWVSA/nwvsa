@@ -27,10 +27,6 @@ function Navbar() {
 
       <ul className="nav-links">
         <li>
-          <Link to="/teams">Meet the Team</Link>
-        </li>
-
-        <li>
           <Link to="/about">About</Link>
         </li>
         <li>
@@ -41,6 +37,9 @@ function Navbar() {
         </li>
         <li>
           <Link to="/opportunities">Opportunities</Link>
+        </li>
+        <li>
+          <Link to="/teams">Meet the Team</Link>
         </li>
         <li>
           <Link to="/donations">Donations</Link>

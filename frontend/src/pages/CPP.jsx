@@ -32,22 +32,30 @@ const COMPONENTS = [
   },
 ];
 
-// Beneficiary organizations by cycle (most recent first).
+// Beneficiary organizations by cycle (most recent first). `logo: true` means
+// the image is a brand mark (contained on white) rather than a program photo.
 const BENEFICIARIES = [
   {
     year: "2025–2026",
     name: "Vietnam Assistance for the Handicapped (VNAH)",
     desc: "Supporting vocational rehabilitation and training for children with disabilities through a café/canteen model in Ho Chi Minh City.",
+    img: "/images/unnamed-3.webp",
+    alt: "VNAH recipients riding hand-powered mobility tricycles",
   },
   {
     year: "2024–2025",
     name: "Vietnam Health Clinic",
     desc: "Expanding mobile health services for communities across rural Central Vietnam.",
+    img: "/images/unnamed-2.webp",
+    alt: "A Vietnam Health Clinic volunteer providing care",
   },
   {
     year: "2023–2024",
     name: "Rock-Paper-Scissors Children's Fund",
     desc: "Providing arts education for underprivileged children in Vietnam.",
+    img: "/images/00RPSLogo1_Small-1024x571-1-400x223.webp",
+    alt: "Rock-Paper-Scissors Children's Fund logo",
+    logo: true,
   },
 ];
 
@@ -88,6 +96,31 @@ function CPP() {
                 >
                   Learn More →
                 </a>
+              </div>
+              <div
+                style={{
+                  marginTop: "32px",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "14px",
+                }}
+              >
+                <span
+                  style={{
+                    fontSize: "11px",
+                    letterSpacing: "0.12em",
+                    textTransform: "uppercase",
+                    color: "var(--mid-gray)",
+                  }}
+                >
+                  In partnership with
+                </span>
+                <img
+                  src="/images/unnamed-400x400.webp"
+                  alt="UNAVSA logo"
+                  style={{ height: "38px", width: "auto" }}
+                  loading="lazy"
+                />
               </div>
             </div>
             <div className="about-visual">
@@ -152,6 +185,12 @@ function CPP() {
         <div className="events-grid reveal">
           {BENEFICIARIES.map((b) => (
             <div className="event-card" key={b.year}>
+              <img
+                className={`event-photo${b.logo ? " event-photo--logo" : ""}`}
+                src={b.img}
+                alt={b.alt}
+                loading="lazy"
+              />
               <div className="event-card-top">
                 <span className="event-tag">{b.year}</span>
                 <h3 className="event-title">{b.name}</h3>

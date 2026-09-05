@@ -40,6 +40,12 @@ function Events() {
         <div className="events-grid reveal">
           {/* Upcoming flagship camp */}
           <div className="event-card">
+            <img
+              className="event-photo"
+              src="/images/NWVSA_Camp2024-800x533.webp"
+              alt="NWVSA Camp group photo outdoors in the Pacific Northwest"
+              loading="lazy"
+            />
             <div className="event-card-top">
               <span className="event-tag">Upcoming Camp</span>
               <h3 className="event-title">
@@ -64,6 +70,12 @@ function Events() {
           </div>
           {/* Annual tradition */}
           <div className="event-card">
+            <img
+              className="event-photo"
+              src="/images/54647925722_1152c5dbe3_o-600x400.webp"
+              alt="NWVSA members laughing together"
+              loading="lazy"
+            />
             <div className="event-card-top">
               <span className="event-tag">Annual Tradition</span>
               <h3 className="event-title">Turkey Bowl</h3>
@@ -82,6 +94,49 @@ function Events() {
                 </svg>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Camp gallery */}
+        <div
+          className="reveal"
+          style={{ maxWidth: "1100px", margin: "72px auto 0" }}
+        >
+          <div
+            className="section-eyebrow"
+            style={{ textAlign: "center" }}
+          >
+            Life at Camp
+          </div>
+          <h3
+            className="section-title"
+            style={{
+              fontSize: "clamp(24px, 3vw, 34px)",
+              textAlign: "center",
+              margin: "0 auto 32px",
+            }}
+          >
+            Moments from the <em>mountain</em>
+          </h3>
+          <div className="photo-gallery">
+            <img
+              className="photo-frame"
+              src="/images/54000784791_e68b242049_o-e1735783032518.webp"
+              alt="Campers laughing down a slip-n-slide"
+              loading="lazy"
+            />
+            <img
+              className="photo-frame"
+              src="/images/53966894222_24884a0855_o-800x450.webp"
+              alt="Camp crew in matching bucket hats"
+              loading="lazy"
+            />
+            <img
+              className="photo-frame"
+              src="/images/52391796993_1a9d231650_o-e1735782963310.webp"
+              alt="Decorated paper bags at a camp candlelight night"
+              loading="lazy"
+            />
           </div>
         </div>
       </section>
