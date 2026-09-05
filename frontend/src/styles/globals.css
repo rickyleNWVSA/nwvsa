@@ -1,0 +1,132 @@
+/* globals.css — the one stylesheet main.jsx loads.
+ *
+ * It pulls in the design tokens, reset, and shared animations, then defines the
+ * cross-page primitives that several pages reuse (buttons, section headings,
+ * the content wrapper). Anything used by only one page/component lives in that
+ * page/component's own CSS file instead — this file is intentionally small.
+ *
+ * @import must come before any rules.
+ */
+@import "./variables.css";
+@import "./reset.css";
+@import "./animations.css";
+@import "./sections.css";
+
+/* ── Section shell (shared by About, CPP, Events, Opportunities, Donations) ── */
+section {
+  padding: 100px 24px;
+}
+
+.section-wrap {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.section-eyebrow {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 16px;
+}
+
+.section-title {
+  font-family: var(--font-display);
+  font-size: clamp(32px, 5vw, 56px);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--dark);
+  max-width: 720px;
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--accent);
+}
+
+.section-body {
+  font-size: 17px;
+  color: var(--mid-gray);
+  line-height: 1.7;
+  max-width: 600px;
+  margin-top: 20px;
+  font-weight: 300;
+}
+
+/* ── Buttons (shared) ── */
+.btn-primary {
+  background: var(--dark);
+  color: var(--white);
+  border: none;
+  border-radius: 980px;
+  padding: 14px 32px;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s, background 0.2s;
+  display: inline-block;
+}
+.btn-primary:hover {
+  transform: scale(1.03);
+  background: var(--accent);
+}
+
+.btn-outline {
+  background: var(--white);
+  color: var(--accent);
+  border: 1.5px solid var(--white);
+  border-radius: 980px;
+  padding: 14px 32px;
+  font-size: 15px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: transform 0.18s, background 0.2s, color 0.2s;
+  display: inline-block;
+}
+.btn-outline:hover {
+  background: var(--dark);
+  color: var(--white);
+  transform: scale(1.03);
+}
+
+/* ── Imagery (shared photo treatments) ── */
+.photo-frame {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 20px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.14);
+  object-fit: cover;
+}
+
+/* A full-width community photo band. */
+.media-band {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.media-band figcaption {
+  margin-top: 14px;
+  text-align: center;
+  font-size: 13px;
+  color: var(--mid-gray);
+  letter-spacing: 0.02em;
+}
+
+/* An even grid of candid photos. */
+.photo-gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.photo-gallery .photo-frame {
+  height: 100%;
+  aspect-ratio: 4 / 3;
+}
+@media (max-width: 760px) {
+  .photo-gallery {
+    grid-template-columns: 1fr 1fr;
+  }
+}

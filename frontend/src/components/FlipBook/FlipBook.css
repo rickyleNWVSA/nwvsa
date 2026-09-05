@@ -1,0 +1,189 @@
+/* ─────────────────────────────────────────────────────────────
+   FlipBook.css
+   Framework-free port of the CSS "flip book" (checkbox-hack based).
+   Original concept: fchavonet/creative_coding-flip_book (MIT).
+   - No Tailwind / DaisyUI.
+   - No external .webp assets (edge shading is done with CSS gradients).
+   - Everything is scoped under .flipbook-stage so it can't leak
+     into the rest of the site (e.g. it does NOT hide every <input>).
+   The per-leaf z-index + flip rules are generated in FlipBook.jsx.
+   ───────────────────────────────────────────────────────────── */
+
+.flipbook-stage {
+  /* Book dimensions live here so the leaves and the "open cover" offset
+     all scale together. Bump these to grow the whole book. */
+  --book-w: 380px;
+  --book-h: 580px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: calc(var(--book-h) + 40px);
+  perspective: 2400px;
+}
+
+/* Hidden checkboxes that drive the flips.
+   Scoped to .flip-toggle so we don't hide other inputs on the page. */
+.flipbook-stage input.flip-toggle {
+  display: none;
+}
+
+.flipbook {
+  width: var(--book-w);
+  height: var(--book-h);
+  position: relative;
+  transition-duration: 1s;
+  perspective: 2000px;
+}
+
+/* ── COVERS ── */
+.front-cover,
+.back-cover {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 2.5px 5px 5px 2.5px;
+  background: linear-gradient(
+    135deg,
+    color-mix(in srgb, var(--cover-color, #dc143c) 72%, #000),
+    var(--cover-color, #dc143c)
+  );
+  box-shadow: inset -6px 0 12px rgba(0, 0, 0, 0.25), 0 6px 18px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  text-align: center;
+  padding: 24px;
+}
+
+.front-cover {
+  position: absolute;
+  cursor: pointer;
+  transform-origin: center left;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  z-index: 99;
+}
+
+/* The cover's text/logo live on this face; hidden once the cover turns away so
+   they never appear mirrored on the open (inside) cover. */
+.cover-face {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  backface-visibility: hidden;
+}
+
+.front-cover label {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+}
+
+.back-cover {
+  position: relative;
+  z-index: -1;
+}
+
+.cover-logo {
+  width: 42%;
+  max-width: 150px;
+  height: auto;
+  margin-bottom: 8px;
+  filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.3));
+}
+
+.cover-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  opacity: 0.85;
+}
+
+.cover-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(24px, 4vw, 32px);
+  line-height: 1.1;
+  font-weight: 600;
+  max-width: 90%;
+}
+
+.cover-hint {
+  margin-top: 6px;
+  font-size: 12px;
+  opacity: 0.8;
+}
+
+/* ── LEAVES (each physical page = a front face + a back face) ── */
+.leaf {
+  width: calc(var(--book-w) - 10px);
+  height: calc(var(--book-h) - 20px);
+  position: absolute;
+  top: 10px;
+  left: 1px;
+  border-radius: 0 5px 5px 0;
+  background: #fff;
+  transform-origin: left;
+  transform-style: preserve-3d;
+  transform: rotateY(0deg);
+  transition-duration: 0.5s;
+}
+
+.leaf-face {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  backface-visibility: hidden;
+  background: #fff;
+}
+
+.leaf-face.front {
+  border-radius: 0 5px 5px 0;
+}
+
+.leaf-face.back {
+  transform: rotateY(180deg);
+  border-radius: 5px 0 0 5px;
+}
+
+/* The label overlays the whole face so clicking anywhere flips it
+   (faithful to the original). To keep card content clickable instead,
+   shrink this to a corner — see the note in FlipBook.jsx. */
+.leaf-face label {
+  position: absolute;
+  inset: 0;
+  cursor: pointer;
+  z-index: 3;
+}
+
+/* Soft page-edge shading near the spine (replaces the .webp assets). */
+.leaf-face.front::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to left, rgba(0, 0, 0, 0.07), transparent 12%);
+}
+
+.leaf-face.back::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.07), transparent 12%);
+}
+
+.leaf-content {
+  position: absolute;
+  inset: 0;
+  padding: 22px 20px;
+  z-index: 1;
+}
+
+/* NOTE: the "open the cover" and per-leaf flip rules are generated per-instance
+   in FlipBook.jsx (scoped to each book's unique stage id) so that many books
+   can coexist on one page — e.g. inside the album carousel. */

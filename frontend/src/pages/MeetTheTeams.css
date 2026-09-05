@@ -1,0 +1,314 @@
+/* MeetTheTeams page — a single openable scrapbook with a Pacific Northwest,
+   evergreen feel. */
+
+.teams-page {
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 40px 24px 100px;
+  color: var(--dark, #1d1d1f);
+  background: var(--white, #ffffff);
+}
+
+.teams-back {
+  align-self: flex-start;
+  font-size: 13px;
+  text-decoration: none;
+  color: var(--mid-gray, #6e6e73);
+}
+.teams-back:hover { color: var(--accent, #38761d); }
+
+.teams-head {
+  text-align: center;
+  margin: 8px 0 24px;
+}
+
+.teams-eyebrow {
+  font-size: 12px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--accent, #38761d);
+}
+
+.teams-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 46px;
+  font-weight: 600;
+  margin-top: 6px;
+  color: var(--dark, #1d1d1f);
+}
+
+.teams-hint {
+  margin-top: 8px;
+  font-size: 14px;
+  color: var(--mid-gray, #6e6e73);
+}
+
+/* ── Coverflow carousel ── */
+.tc {
+  width: 100%;
+  max-width: 1100px;
+  margin-top: 8px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+}
+
+.tc-viewport {
+  position: relative;
+  min-height: calc(var(--book-h) + 70px);
+  perspective: 1900px;
+  overflow: hidden; /* clip the angled side albums */
+}
+
+.tc-stage {
+  position: absolute;
+  inset: 0;
+  transform-style: preserve-3d;
+}
+
+/* Each album sits centered; slotStyle() offsets it in 3D. */
+.tc-slot {
+  position: absolute;
+  top: 24px;
+  left: 50%;
+  width: var(--book-w);
+  margin-left: calc(var(--book-w) / -2);
+  transition: transform 0.55s cubic-bezier(0.22, 0.7, 0.24, 1),
+    opacity 0.5s ease, filter 0.5s ease;
+}
+
+/* Side albums: a click selects them (rather than opening), so disable the
+   flip interactions and show a pointer. */
+.tc-slot:not(.is-center) {
+  cursor: pointer;
+}
+.tc-slot:not(.is-center) .flipbook-stage {
+  pointer-events: none;
+}
+.tc-slot:not(.is-center):hover {
+  filter: brightness(1) saturate(1) !important;
+}
+
+/* The flip book's stage adds its own vertical centering height; not needed
+   inside the carousel. */
+.tc-slot .flipbook-stage {
+  min-height: 0;
+}
+
+/* ── Arrows ── */
+.tc-arrow {
+  z-index: 50;
+  flex: none;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: var(--white, #ffffff);
+  color: var(--dark, #1d1d1f);
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
+  transition: background 0.15s, color 0.15s, transform 0.15s;
+}
+.tc-arrow:hover {
+  background: var(--accent, #38761d);
+  color: #fff;
+  transform: scale(1.06);
+}
+
+/* ── Active board caption ── */
+.tc-caption {
+  margin-top: 18px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 22px;
+  font-weight: 600;
+  color: var(--dark, #1d1d1f);
+}
+.tc-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: var(--dot, #38761d);
+}
+
+/* ── Page holding up to two officers, stacked ── */
+.team-page {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* ── Team card (up to two per page) ── */
+.team-card {
+  flex: 1;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 10px 0;
+}
+/* Divider between the two officers on a page. */
+.team-card + .team-card {
+  border-top: 1px solid var(--light-gray, #e8e8ee);
+}
+
+.team-photo {
+  width: 240px;
+  height: 240px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--light-gray, #e8e8ee);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.18);
+  flex: none;
+}
+.team-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/* Logos should sit inside the circle, not be cropped like a headshot. */
+.team-photo--logo img {
+  object-fit: contain;
+  padding: 26px;
+}
+
+.team-role {
+  margin-top: 20px;
+  font-size: 12px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--accent, #38761d);
+}
+
+.team-name {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 27px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+.team-pronouns {
+  margin-top: 3px;
+  font-size: 12px;
+  font-style: italic;
+  color: var(--mid-gray, #6e6e73);
+}
+
+.team-blurb {
+  margin-top: 10px;
+  font-size: 13px;
+  line-height: 1.55;
+  font-weight: 300;
+  color: var(--mid-gray, #6e6e73);
+}
+
+/* ── Intercollegiate Council grid ── */
+.icc {
+  width: 100%;
+  max-width: 1200px;
+  margin-top: 88px;
+}
+
+.icc-head {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 40px;
+}
+
+.icc-title {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: clamp(28px, 4vw, 40px);
+  font-weight: 600;
+  color: var(--dark, #1d1d1f);
+  margin-top: 6px;
+}
+
+.icc-sub {
+  margin-top: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--mid-gray, #6e6e73);
+}
+
+.icc-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 24px;
+}
+
+.icc-card {
+  background: var(--white, #fff);
+  border: 1px solid var(--light-gray, #e8e8ee);
+  border-radius: 18px;
+  padding: 22px 22px 26px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.05);
+  transition: transform 0.18s, box-shadow 0.18s;
+  text-align: center;
+}
+.icc-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 36px rgba(0, 0, 0, 0.1);
+}
+
+/* Chapter logo leads the card, like the original site. */
+.icc-logo {
+  width: 100%;
+  height: 140px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 14px;
+  background: var(--off-white, #f5f5f7);
+  border-radius: 14px;
+  margin-bottom: 18px;
+}
+.icc-logo img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.icc-school {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.25;
+  color: var(--dark, #1d1d1f);
+  padding-bottom: 16px;
+  margin-bottom: 16px;
+  border-bottom: 1px solid var(--light-gray, #e8e8ee);
+}
+
+.icc-reps {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.icc-reps li {
+  display: flex;
+  flex-direction: column;
+}
+
+.icc-role {
+  font-size: 10.5px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent, #38761d);
+}
+
+.icc-name {
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--dark, #1d1d1f);
+  margin-top: 2px;
+}
