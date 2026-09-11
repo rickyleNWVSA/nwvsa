@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import useScrollReveal from "../hooks/useScrollReveal.js";
@@ -87,15 +88,13 @@ function CPP() {
                 awareness, funds, and lasting support.
               </p>
               <div style={{ marginTop: "36px" }}>
-                <a
-                  href="https://northwestvsa.com/cpp/"
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  to="/cpp/learn-more"
                   className="btn-primary"
                   style={{ fontSize: "14px", padding: "12px 28px" }}
                 >
                   Learn More →
-                </a>
+                </Link>
               </div>
               <div
                 style={{
@@ -150,7 +149,7 @@ function CPP() {
             Four steps of <em>collective giving</em>
           </h2>
         </div>
-        <div className="goals-grid reveal">
+        <div className="goals-grid goals-grid--2x2 reveal">
           {COMPONENTS.map((c) => (
             <div className="goal-card" key={c.title}>
               <h3 className="goal-title">{c.title}</h3>

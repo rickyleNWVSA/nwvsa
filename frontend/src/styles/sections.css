@@ -91,6 +91,11 @@
   overflow: hidden;
 }
 
+.goals-grid--2x2 {
+  grid-template-columns: repeat(2, 1fr);
+  max-width: 800px;
+}
+
 .goal-card {
   background: var(--white);
   padding: 56px 40px;

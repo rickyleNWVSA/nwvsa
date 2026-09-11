@@ -1,0 +1,149 @@
+/* CPP Learn More page — the deeper-dive sections not covered on CPP.jsx.
+   Reuses shared classes (goals-grid, goal-card, about-card, section-*) from
+   styles/sections.css and styles/globals.css; only genuinely new block types
+   (bullet lists, the two-column profile layout, impact stats, contact card)
+   live here. */
+
+.back-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  color: var(--mid-gray);
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: color 0.2s;
+}
+
+.back-link:hover { color: var(--accent); }
+
+/* ── DETAIL LISTS (used inside goal-card and standalone) ── */
+.detail-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.detail-list li {
+  position: relative;
+  padding-left: 20px;
+  font-size: 15px;
+  color: var(--mid-gray);
+  line-height: 1.6;
+  font-weight: 300;
+}
+
+.detail-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 8px;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.detail-list--columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px 32px;
+}
+
+.detail-list--large li {
+  font-size: 16px;
+}
+
+/* ── PROFILE SPLIT (fellowship + beneficiary history layouts) ── */
+.profile-split {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 56px;
+  align-items: start;
+}
+
+/* ── IMPACT STATS ── */
+.impact-header {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.impact-stats {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.impact-stat {
+  text-align: center;
+  padding: 16px 40px;
+  border-right: 1px solid var(--light-gray);
+}
+
+.impact-stat:last-child { border-right: none; }
+
+.impact-num {
+  font-size: 40px;
+}
+
+.impact-label {
+  max-width: 160px;
+  margin: 6px auto 0;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  line-height: 1.4;
+}
+
+/* ── ORG LINK (small arrow link inside a card) ── */
+.org-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.org-link:hover { text-decoration: underline; }
+
+/* ── CONTACT CARD ── */
+.contact-card {
+  background: var(--off-white);
+  border-radius: 24px;
+  padding: 56px;
+  text-align: center;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+.contact-card .goal-desc {
+  max-width: 500px;
+  margin: 12px auto 28px;
+}
+
+.contact-links {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  .profile-split { grid-template-columns: 1fr; gap: 36px; }
+  .detail-list--columns { grid-template-columns: 1fr; }
+}
+
+@media (max-width: 600px) {
+  .impact-stat { padding: 16px 20px; border-right: none; }
+  .contact-card { padding: 40px 24px; }
+}
