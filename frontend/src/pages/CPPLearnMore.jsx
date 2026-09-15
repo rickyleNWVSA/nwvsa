@@ -267,9 +267,12 @@ function CPPLearnMore() {
       {/* FELLOWSHIP IN DEPTH */}
       <section style={{ background: "var(--white)", padding: "100px 24px" }}>
         <div className="section-wrap">
-          <div className="goals-header reveal" style={{ margin: "0 0 56px" }}>
+          <div
+            className="goals-header reveal"
+            style={{ margin: "0 auto 56px", maxWidth: "900px" }}
+          >
             <div className="section-eyebrow">CPP Fellowship</div>
-            <h2 className="section-title">
+            <h2 className="section-title fellowship-title">
               A 3-month path into <em>nonprofit work</em>
             </h2>
           </div>
@@ -488,14 +491,6 @@ function CPPLearnMore() {
             <div className="contact-links">
               <a href="mailto:cpp.operations@unavsa.org" className="btn-primary">
                 cpp.operations@unavsa.org
-              </a>
-              <a
-                href="https://northwestvsa.com/cpp/"
-                target="_blank"
-                rel="noreferrer"
-                className="org-link"
-              >
-                Read the full official CPP page →
               </a>
             </div>
           </div>

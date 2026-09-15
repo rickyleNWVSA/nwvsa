@@ -50,18 +50,6 @@ function About() {
                 </p>
                 <div className="about-card-footer">NWVSA Mission Statement</div>
               </div>
-
-              <div style={{ marginTop: "32px" }}>
-                <a
-                  href="https://northwestvsa.com/our-misson-values/"
-                  target="_blank"
-                  rel="noreferrer"
-                  className="btn-primary"
-                  style={{ fontSize: "14px", padding: "12px 28px" }}
-                >
-                  Learn More →
-                </a>
-              </div>
             </div>
 
             {/* Photo on the right */}
