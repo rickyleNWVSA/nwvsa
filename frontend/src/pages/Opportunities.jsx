@@ -6,18 +6,16 @@ import useScrollReveal from "../hooks/useScrollReveal.js";
 /*
  * Opportunities — open positions within NWVSA.
  *
- * Content mirrors northwestvsa.com/opportunities: the currently open roles plus
- * links to the info document and application form. Built with the shared
- * design-system classes so it matches the rest of the site.
+ * Content mirrors northwestvsa.com/opportunities: the currently open roles.
+ * Built with the shared design-system classes so it matches the rest of the
+ * site.
  *
  * NOTE: the live site links to a Google Doc (role details) and a Google Form
- * (application) whose exact URLs aren't published here, so both buttons point to
- * the official Opportunities page rather than fabricating links. Drop the real
- * Google URLs into INFO_DOC_URL / APPLICATION_URL when you have them.
+ * (application) whose exact URLs aren't published here. northwestvsa.com
+ * itself is currently down, so rather than link out to a dead page, the
+ * "Role Details", "Apply Now", and role-card buttons below are disabled
+ * placeholders until a real page/form exists to link to.
  */
-
-const INFO_DOC_URL = "https://northwestvsa.com/opportunities/";
-const APPLICATION_URL = "https://northwestvsa.com/opportunities/";
 
 // Currently open roles. `openings` > 1 shows a count.
 const ROLES = [
@@ -62,29 +60,32 @@ function Opportunities() {
               flexWrap: "wrap",
             }}
           >
-            <a
-              href={INFO_DOC_URL}
-              target="_blank"
-              rel="noreferrer"
+            <span
               className="btn-primary"
-              style={{ fontSize: "14px", padding: "12px 28px" }}
+              title="Coming soon — role details page in progress"
+              style={{
+                fontSize: "14px",
+                padding: "12px 28px",
+                opacity: 0.5,
+                cursor: "not-allowed",
+              }}
             >
               Role Details →
-            </a>
-            <a
-              href={APPLICATION_URL}
-              target="_blank"
-              rel="noreferrer"
+            </span>
+            <span
               className="btn-outline"
+              title="Coming soon — application form in progress"
               style={{
                 fontSize: "14px",
                 padding: "12px 28px",
                 background: "var(--white)",
                 borderColor: "var(--light-gray)",
+                opacity: 0.5,
+                cursor: "not-allowed",
               }}
             >
               Apply Now
-            </a>
+            </span>
           </div>
         </div>
       </section>
@@ -101,13 +102,16 @@ function Opportunities() {
         </div>
         <div className="events-grid reveal">
           {ROLES.map((role) => (
-            <a
+            <div
               key={role.title}
-              href={APPLICATION_URL}
-              target="_blank"
-              rel="noreferrer"
               className="event-card"
-              style={{ textDecoration: "none", color: "inherit" }}
+              title="Coming soon — application form in progress"
+              style={{
+                textDecoration: "none",
+                color: "inherit",
+                cursor: "not-allowed",
+                opacity: 0.7,
+              }}
             >
               <div className="event-card-top">
                 <span className="event-tag">
@@ -119,15 +123,10 @@ function Opportunities() {
               </div>
               <div className="event-card-bottom">
                 <span style={{ fontSize: "13px", color: "var(--mid-gray)" }}>
-                  Apply to sign up
+                  Applications coming soon
                 </span>
-                <div className="event-arrow">
-                  <svg viewBox="0 0 24 24">
-                    <path d="M5 12h14M12 5l7 7-7 7" />
-                  </svg>
-                </div>
               </div>
-            </a>
+            </div>
           ))}
         </div>
 

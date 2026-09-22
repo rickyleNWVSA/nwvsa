@@ -1,0 +1,19 @@
+# NWVSA — Apache config for northwestvsa.com (deployed as a static SPA build).
+# This file lives in public/ so `vite build` copies it into dist/ untouched.
+
+RewriteEngine On
+
+# Canonicalize to https://northwestvsa.com (bare domain, no www).
+# One rule catches both cases (wrong host OR wrong protocol) to avoid a
+# double redirect.
+RewriteCond %{HTTP_HOST} ^www\.northwestvsa\.com$ [NC,OR]
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://northwestvsa.com%{REQUEST_URI} [L,R=301]
+
+# SPA fallback: react-router (BrowserRouter) owns client-side paths like
+# /about and /teams, which aren't real files on disk. For any request that
+# isn't an existing file or directory, serve index.html and let the app's
+# router handle it.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.html [L]

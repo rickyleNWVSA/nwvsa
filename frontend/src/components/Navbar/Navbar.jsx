@@ -46,12 +46,7 @@ function Navbar() {
         </li>
       </ul>
 
-      <a
-        href="https://northwestvsa.com/contact-us/"
-        target="_blank"
-        rel="noreferrer"
-        className="nav-cta"
-      >
+      <a href="mailto:eboard@nwvsa.org" className="nav-cta">
         Contact Us
       </a>
     </nav>

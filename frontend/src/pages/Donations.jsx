@@ -40,14 +40,13 @@ function Donations() {
           camps and funding our flagship events. Together, we can create a future
           where Vietnamese identity and leadership thrive.
         </p>
-        <a
-          href="https://northwestvsa.com/donations-2/"
-          target="_blank"
-          rel="noreferrer"
+        <span
           className="btn-gold reveal"
+          title="Coming soon — donation page in progress"
+          style={{ opacity: 0.6, cursor: "not-allowed" }}
         >
           Donate to NWVSA
-        </a>
+        </span>
       </section>
 
       {/* SPONSORS */}

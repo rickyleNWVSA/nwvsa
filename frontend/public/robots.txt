@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /carousel-demo
+
+Sitemap: https://northwestvsa.com/sitemap.xml

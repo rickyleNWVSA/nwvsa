@@ -50,7 +50,7 @@ function Home() {
       <div className="stat-bar">
         <div className="stat-item">
           <div className="stat-num">
-            <em>16</em>
+            <em>18</em>
           </div>
           <div className="stat-label">Constituent Schools</div>
         </div>

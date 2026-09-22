@@ -170,7 +170,7 @@ function About() {
             className="section-title"
             style={{ margin: "0 auto", textAlign: "center" }}
           >
-            16 schools, <em>one family</em>
+            18 schools, <em>one family</em>
           </h2>
           <p
             style={{

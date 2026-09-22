@@ -23,19 +23,19 @@ function Events() {
               Events & <em>Traditions</em>
             </h2>
           </div>
-          <a
-            href="https://northwestvsa.com/events/"
-            target="_blank"
-            rel="noreferrer"
+          <span
             className="btn-outline"
+            title="Coming soon — full events page in progress"
             style={{
               fontSize: "14px",
               padding: "12px 28px",
               whiteSpace: "nowrap",
+              opacity: 0.5,
+              cursor: "not-allowed",
             }}
           >
             View All Events
-          </a>
+          </span>
         </div>
         <div className="events-grid reveal">
           {/* Upcoming flagship camp */}
