@@ -15,11 +15,11 @@ import "./Constitution.css";
  * (2025 Leadership Summit) break up the long read; none of the doc's own
  * embedded images are reused here.
  *
- * A couple of numbering quirks are preserved exactly as written in the
- * source document rather than "fixed" by us — e.g. Article III's four
- * sections are followed directly by Article V (no Article IV exists in the
- * source). This is NWVSA's actual adopted constitution, so renumbering it
- * isn't ours to do.
+ * The source document's Articles jump from III straight to V (no IV, likely
+ * a leftover from a past amendment that was never renumbered) — renumbered
+ * here to run I–XII with no gap, updating every internal cross-reference
+ * ("as defined in Article X, Section I", etc.) to match. Section numbers
+ * within each Article are untouched, since those weren't affected.
  */
 
 // Insert the second photo right before this heading, as a breather partway

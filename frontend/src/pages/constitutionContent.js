@@ -1026,12 +1026,12 @@ const CONSTITUTION_BLOCKS = [
   },
   {
     "type": "para",
-    "text": "Voting rights and privileges held by the ICC are outlined in Article VI. Section 2."
+    "text": "Voting rights and privileges held by the ICC are outlined in Article V. Section 2."
   },
   {
     "type": "heading",
     "level": 1,
-    "text": "ARTICLE V - Membership"
+    "text": "ARTICLE IV - Membership"
   },
   {
     "type": "heading",
@@ -1235,7 +1235,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "ARTICLE VI - Meeting"
+    "text": "ARTICLE V - Meeting"
   },
   {
     "type": "para",
@@ -1255,7 +1255,7 @@ const CONSTITUTION_BLOCKS = [
         "children": []
       },
       {
-        "text": "On material decisions, the outcome shall be decided by a vote by the Executive Board which must have seeked council from the Board of Directors, Executive Board does not have to vote in accordance to the Board of Directors. Material decisions are as outlined in Article VIII",
+        "text": "On material decisions, the outcome shall be decided by a vote by the Executive Board which must have seeked council from the Board of Directors, Executive Board does not have to vote in accordance to the Board of Directors. Material decisions are as outlined in Article VII",
         "children": []
       },
       {
@@ -1356,7 +1356,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "ARTICLE VII - Election"
+    "text": "ARTICLE VI - Election"
   },
   {
     "type": "heading",
@@ -1568,7 +1568,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "ARTICLE VIII - Decisions"
+    "text": "ARTICLE VII - Decisions"
   },
   {
     "type": "heading",
@@ -1577,7 +1577,7 @@ const CONSTITUTION_BLOCKS = [
   },
   {
     "type": "para",
-    "text": "Non-material decisions, as defined in Article VI, Section I, will be decided through a majority decision by members in good standing, as defined in Article X, Section I, of the Executive Board or the relevant committee facing the decision."
+    "text": "Non-material decisions, as defined in Article V, Section I, will be decided through a majority decision by members in good standing, as defined in Article IX, Section I, of the Executive Board or the relevant committee facing the decision."
   },
   {
     "type": "heading",
@@ -1589,7 +1589,7 @@ const CONSTITUTION_BLOCKS = [
     "ordered": true,
     "items": [
       {
-        "text": "All material decisions will be made according to guidelines provided in Article VIII, Section II. Voting parties agreed upon within Article VI.",
+        "text": "All material decisions will be made according to guidelines provided in Article VII, Section II. Voting parties agreed upon within Article V.",
         "children": [
           {
             "type": "list",
@@ -1603,7 +1603,7 @@ const CONSTITUTION_BLOCKS = [
                     "ordered": true,
                     "items": [
                       {
-                        "text": "A decision will be material as defined in Article VI, Section I",
+                        "text": "A decision will be material as defined in Article V, Section I",
                         "children": []
                       },
                       {
@@ -1630,7 +1630,7 @@ const CONSTITUTION_BLOCKS = [
             "ordered": true,
             "items": [
               {
-                "text": "Quorum will be defined by the number of members present that are in good standing, as defined in Article X, Section I",
+                "text": "Quorum will be defined by the number of members present that are in good standing, as defined in Article IX, Section I",
                 "children": []
               },
               {
@@ -1675,7 +1675,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "ARTICLE IX - Amendments"
+    "text": "ARTICLE VIII - Amendments"
   },
   {
     "type": "para",
@@ -1717,7 +1717,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "ARTICLE X - Probation"
+    "text": "ARTICLE IX - Probation"
   },
   {
     "type": "heading",
@@ -1761,7 +1761,7 @@ const CONSTITUTION_BLOCKS = [
   },
   {
     "type": "para",
-    "text": "If a member of the Board of Director or general staff is not demonstrating characteristics of a member in good standing, as defined in Article X, Section I, the Executive Board may nominate that member for a performance review by the Board of Directors."
+    "text": "If a member of the Board of Director or general staff is not demonstrating characteristics of a member in good standing, as defined in Article IX, Section I, the Executive Board may nominate that member for a performance review by the Board of Directors."
   },
   {
     "type": "para",
@@ -1792,7 +1792,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "Article XI - Finances and Legal"
+    "text": "Article X - Finances and Legal"
   },
   {
     "type": "heading",
@@ -1859,7 +1859,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "Article XII - Accessibility"
+    "text": "Article XI - Accessibility"
   },
   {
     "type": "para",
@@ -1893,7 +1893,7 @@ const CONSTITUTION_BLOCKS = [
   {
     "type": "heading",
     "level": 1,
-    "text": "Article XIII - Grievance Procedure"
+    "text": "Article XII - Grievance Procedure"
   },
   {
     "type": "heading",
