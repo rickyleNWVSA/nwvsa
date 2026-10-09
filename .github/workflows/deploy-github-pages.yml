@@ -33,6 +33,18 @@ jobs:
         working-directory: frontend
         run: npm run build
 
+      - name: SPA fallback for direct/deep links
+        # GitHub Pages has no server-side rewrite (unlike the .htaccess used
+        # on the real northwestvsa.com host), so a request to e.g. /donations
+        # 404s instead of reaching index.html. GitHub Pages serves 404.html
+        # for any unmatched path, so making it an exact copy of index.html
+        # lets the app boot and React Router take it from there. This only
+        # works because this site is served at the repo root with no
+        # subpath — a project-pages subpath would need the fuller
+        # sessionStorage-redirect version of this trick.
+        working-directory: frontend
+        run: cp dist/index.html dist/404.html
+
       - name: Deploy to rickyleNWVSA.github.io
         uses: peaceiris/actions-gh-pages@v4
         with:
