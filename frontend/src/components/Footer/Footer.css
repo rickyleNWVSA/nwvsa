@@ -75,6 +75,21 @@ footer {
   font-size: 13px;
 }
 
+.footer-legal {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.footer-powered-by {
+  color: rgba(255,255,255,0.3);
+  text-decoration: none;
+  font-size: 12px;
+  transition: color 0.2s;
+}
+
+.footer-powered-by:hover { color: var(--accent); }
+
 .footer-social {
   display: flex;
   gap: 16px;
