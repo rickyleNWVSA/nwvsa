@@ -303,13 +303,13 @@
   margin-top: 3px;
 }
 
-/* ── Tablet (640–999px): keep the real 3D flipbook, lose the side peeks ──
+/* ── Tablet (640–1099px): keep the real 3D flipbook, lose the side peeks ──
    The carousel's side-peek clipping is fine at any width; the only real
    problem is the 440px *center* book not fitting a phone. Between phone and
-   the ~1000px the inline nav needs, show just the center book — slightly
+   the ~1100px the inline nav needs, show just the center book — slightly
    smaller (380×480, FlipBook's own default) with the arrows switching boards
    directly, no 3D perspective math to fit in the available width. */
-@media (min-width: 640px) and (max-width: 999px) {
+@media (min-width: 640px) and (max-width: 1099px) {
   .tc-slot:not(.is-center) {
     display: none;
   }
