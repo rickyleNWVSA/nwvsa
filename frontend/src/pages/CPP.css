@@ -1,0 +1,12 @@
+/* CPP page — only override needed beyond the shared section/about classes. */
+
+/* On desktop the "#cpp" pull-quote sits beside the intro paragraph as a
+   visual accent. Below 900px .about stacks to one column (sections.css),
+   landing the quote directly under a paragraph that already says almost the
+   same thing — so it reads as literal repetition once stacked. Hide it
+   there; the intro paragraph alone carries the same information. */
+@media (max-width: 900px) {
+  #cpp .about-visual {
+    display: none;
+  }
+}

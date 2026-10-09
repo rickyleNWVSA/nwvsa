@@ -1,12 +1,19 @@
+import { useState } from 'react'
 import './FlipBook.css'
 
 /*
- * FlipBook — a framework-free, CSS-driven page-turn "book".
+ * FlipBook — a CSS-driven page-turn "book".
  *
- * How it works (no JS animation, pure CSS):
- *  - Each physical leaf has a hidden checkbox. A full-face <label> toggles it.
- *  - When checked, a generated CSS rule rotates the leaf 180° (page turn) and
- *    bumps its z-index so it lands correctly on the left-hand stack.
+ * How it works:
+ *  - Each physical leaf has a checkbox. A full-face <label> toggles it, and a
+ *    generated CSS rule rotates the leaf 180° (page turn) and bumps its
+ *    z-index so it lands correctly on the left-hand stack.
+ *  - The leaf checkboxes are controlled by `pageIndex` (how many leaves are
+ *    currently flipped) instead of being independently uncontrolled, so the
+ *    "next page" arrow button can advance through them deterministically —
+ *    clicking leaf i's own label still toggles just that leaf, matching the
+ *    original behavior exactly (only the topmost leaf is ever reachable to
+ *    click, so this never changes what was clickable before).
  *
  * Props:
  *  - id       : REQUIRED-ish unique string. Every element id and every generated
@@ -36,6 +43,15 @@ export default function FlipBook({
   const n = leaves.length
   const stageId = `${id}-stage`
 
+  // How many leaves are currently flipped (0 = showing leaf 1's front).
+  const [pageIndex, setPageIndex] = useState(0)
+  const toggleLeaf = (idx) =>
+    setPageIndex((p) => (p > idx ? idx : idx + 1))
+  // Cycles through pageIndex 0..n-1 only — pageIndex === n would flip the
+  // last leaf's back too, landing on the empty back-cover ("The End") with
+  // no member content, which isn't a useful stop when cycling via the arrow.
+  const nextPage = () => setPageIndex((p) => (p + 1) % n)
+
   // Per-leaf stacking + flip rules, all scoped to this instance's stage id.
   //   restZ : higher for earlier leaves so leaf 1 sits on top of the right stack.
   //   flipZ : higher for later leaves so the last-flipped leaf sits on top of
@@ -54,12 +70,14 @@ export default function FlipBook({
     .join('\n')
 
   // Open-the-cover rules (scoped): slide the book right so the open spread stays
-  // centered, and swing the front cover open.
+  // centered, and swing the front cover open. The page-nav button + counter
+  // only make sense once the cover is open, so they're hidden until then.
   const coverCss =
     `#${stageId} input#${id}-cover-toggle:checked ~ .flipbook` +
     `{transform:translateX(calc(var(--book-w) / 2));}\n` +
     `#${stageId} input#${id}-cover-toggle:checked ~ .flipbook .front-cover` +
-    `{transform:rotateY(-180deg);transition:transform 1.5s,z-index .5s .5s;z-index:1;}`
+    `{transform:rotateY(-180deg);transition:transform 1.5s,z-index .5s .5s;z-index:1;}\n` +
+    `#${stageId} input#${id}-cover-toggle:checked ~ .flipbook .page-nav{display:flex;}`
 
   return (
     <div
@@ -82,6 +100,8 @@ export default function FlipBook({
           type="checkbox"
           className="flip-toggle"
           id={`${id}-leaf-${idx + 1}-toggle`}
+          checked={pageIndex > idx}
+          onChange={() => toggleLeaf(idx)}
         />
       ))}
 
@@ -121,6 +141,24 @@ export default function FlipBook({
           <div className="cover-eyebrow">{subtitle}</div>
           <div className="cover-hint">The End</div>
         </div>
+
+        {/* Hidden until the cover is open (see coverCss above). Wraps back to
+            the first page after the last. */}
+        {n > 0 && (
+          <div className="page-nav">
+            <span className="page-counter">
+              {Math.min(pageIndex + 1, n)} / {n}
+            </span>
+            <button
+              type="button"
+              className="page-next-btn"
+              aria-label="Next page"
+              onClick={nextPage}
+            >
+              ›
+            </button>
+          </div>
+        )}
       </div>
     </div>
   )

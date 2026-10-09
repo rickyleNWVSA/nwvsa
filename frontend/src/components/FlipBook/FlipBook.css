@@ -15,6 +15,7 @@
   --book-w: 380px;
   --book-h: 580px;
 
+  position: relative;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -182,6 +183,44 @@
   inset: 0;
   padding: 22px 20px;
   z-index: 1;
+}
+
+/* ── Page-nav (arrow + counter) ──
+   A child of .flipbook, so it rides along with the book's own open/shift
+   transform automatically. Hidden until the cover is open — see the
+   generated coverCss rule in FlipBook.jsx. */
+.page-nav {
+  display: none;
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  align-items: center;
+  gap: 10px;
+  z-index: 999;
+}
+.page-counter {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--mid-gray, #6e6e73);
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 980px;
+  padding: 4px 10px;
+}
+.page-next-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: none;
+  background: var(--dark, #1d1d1f);
+  color: #fff;
+  font-size: 17px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.25);
+  transition: transform 0.15s;
+}
+.page-next-btn:hover {
+  transform: scale(1.08);
 }
 
 /* NOTE: the "open the cover" and per-leaf flip rules are generated per-instance

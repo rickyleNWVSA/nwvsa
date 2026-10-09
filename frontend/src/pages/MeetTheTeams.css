@@ -211,6 +211,126 @@
   color: var(--mid-gray, #6e6e73);
 }
 
+/* ── Phone fallback (pill switcher + flat list) ── */
+.tm-mobile {
+  width: 100%;
+  max-width: 480px;
+  margin-top: 8px;
+}
+
+.tm-pills {
+  display: flex;
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.tm-pill {
+  flex: none;
+  appearance: none;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 700;
+  padding: 9px 18px;
+  border-radius: 980px;
+  border: 1px solid var(--light-gray, #e8e8ee);
+  background: var(--off-white, #f5f5f7);
+  color: var(--mid-gray, #6e6e73);
+}
+.tm-pill[aria-pressed="true"] {
+  color: #fff;
+  border-color: transparent;
+  background: var(--pill-color, var(--accent, #38761d));
+}
+
+.tm-list {
+  display: flex;
+  flex-direction: column;
+  margin-top: 8px;
+}
+
+.tm-member {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--light-gray, #e8e8ee);
+}
+
+.tm-photo {
+  flex: none;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  overflow: hidden;
+  background: var(--light-gray, #e8e8ee);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.14);
+}
+.tm-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.tm-photo--logo img {
+  object-fit: contain;
+  padding: 10px;
+}
+
+.tm-role {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--accent, #38761d);
+}
+.tm-name {
+  font-family: var(--font-display, Georgia, serif);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--dark, #1d1d1f);
+  margin-top: 2px;
+}
+.tm-pronouns {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--mid-gray, #6e6e73);
+  margin-top: 1px;
+}
+.tm-detail {
+  font-size: 12px;
+  color: var(--mid-gray, #6e6e73);
+  margin-top: 3px;
+}
+
+/* ── Tablet (640–899px): keep the real 3D flipbook, lose the side peeks ──
+   The carousel's side-peek clipping is fine at any width; the only real
+   problem is the 440px *center* book not fitting a phone. Between phone and
+   the ~900px the inline nav needs, show just the center book — slightly
+   smaller (380×480, FlipBook's own default) with the arrows switching boards
+   directly, no 3D perspective math to fit in the available width. */
+@media (min-width: 640px) and (max-width: 899px) {
+  .tc-slot:not(.is-center) {
+    display: none;
+  }
+  .flipbook-stage {
+    --book-w: 380px !important;
+    --book-h: 480px !important;
+  }
+  /* No side peeks left to clip here, and the open book shifts right of
+     center (see FlipBook's coverCss) — this breakpoint's viewport is too
+     narrow to fit that shift without clipping the opened page otherwise. */
+  .tc-viewport {
+    overflow: visible;
+  }
+  /* At this width the shifted-open book sits close enough to the outer
+     "switch board" arrow that the two controls crowd each other — give the
+     in-book "next page" arrow more room from it. */
+  .page-nav {
+    right: 56px;
+  }
+}
+
 /* ── Intercollegiate Council grid ── */
 .icc {
   width: 100%;

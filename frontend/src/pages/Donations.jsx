@@ -4,15 +4,16 @@ import useScrollReveal from "../hooks/useScrollReveal.js";
 import "./Donations.css";
 
 // Sponsor logos live in /public/images/Sponsorships. Individual named sponsors
-// (no logo) are rendered as styled text instead of an image.
+// (no logo) are rendered as styled text instead of an image — and intentionally
+// have no `url`, since a person isn't a page to link to.
 const SPONSORS = [
-  { name: "Coalition of Communities of Color VSA", img: "/images/Sponsorships/CC-LOGO-VSA.png" },
-  { name: "Fruit Riot", img: "/images/Sponsorships/Fruit Riot Logo 300x180.png" },
-  { name: "Lan Chi Northwest", img: "/images/Sponsorships/LCNW LOGO LOCKUP LARGE.png" },
-  { name: "OMSI", img: "/images/Sponsorships/OMSI logo.png" },
-  { name: "Verve", img: "/images/Sponsorships/Verve_Logo_-_Black2x.png" },
-  { name: "Whole Foods Market", img: "/images/Sponsorships/Whole Foods Market Logo.png" },
-  { name: "The Frozen Bean", img: "/images/Sponsorships/the frozen bean.png" },
+  { name: "Carbon Core", img: "/images/Sponsorships/CC-LOGO-VSA.png", url: "https://carboncore.supply/" },
+  { name: "Fruit Riot", img: "/images/Sponsorships/Fruit Riot Logo 300x180.png", url: "https://fruitriot.com/" },
+  { name: "LifeCenter Northwest", img: "/images/Sponsorships/LCNW LOGO LOCKUP LARGE.png", url: "https://lcnw.org/" },
+  { name: "OMSI", img: "/images/Sponsorships/OMSI logo.png", url: "https://omsi.edu/" },
+  { name: "Verve", img: "/images/Sponsorships/Verve_Logo_-_Black2x.png", url: "https://www.vervecoffee.com/" },
+  { name: "Whole Foods Market", img: "/images/Sponsorships/Whole Foods Market Logo.png", url: "https://www.wholefoodsmarket.com/" },
+  { name: "The Frozen Bean", img: "/images/Sponsorships/the frozen bean.png", url: "https://thefrozenbean.com/" },
   { name: "Teresa Do", type: "name" },
   { name: "LeAnn Mai", type: "name" },
 ];
@@ -35,18 +36,18 @@ function Donations() {
           Help us <em>empower</em> the next generation
         </h2>
         <p className="donate-sub reveal">
-          Your donation directly fuels our core mission of promoting culture and
-          civic engagement — sponsoring students to attend critical leadership
-          camps and funding our flagship events. Together, we can create a future
-          where Vietnamese identity and leadership thrive.
+          Your donation sponsors students at leadership camps, funds our
+          flagship events, and helps build a future where Vietnamese identity
+          and leadership thrive.
         </p>
-        <span
+        <a
+          href="https://buy.stripe.com/28EaEY2ECavlcQg6qq0Ny0v"
+          target="_blank"
+          rel="noreferrer"
           className="btn-gold reveal"
-          title="Coming soon — donation page in progress"
-          style={{ opacity: 0.6, cursor: "not-allowed" }}
         >
           Donate to NWVSA
-        </span>
+        </a>
       </section>
 
       {/* SPONSORS */}
@@ -61,22 +62,38 @@ function Donations() {
           </h2>
         </div>
         <div className="sponsors-grid reveal">
-          {SPONSORS.map((s) =>
-            s.type === "name" ? (
-              <div className="sponsor-card" key={s.name}>
-                <span className="sponsor-name">{s.name}</span>
-              </div>
+          {SPONSORS.map((s) => {
+            if (s.type === "name") {
+              return (
+                <div className="sponsor-card" key={s.name}>
+                  <span className="sponsor-name">{s.name}</span>
+                </div>
+              );
+            }
+            const logo = (
+              <img
+                className="sponsor-logo"
+                src={s.img}
+                alt={s.name}
+                loading="lazy"
+              />
+            );
+            return s.url ? (
+              <a
+                className="sponsor-card"
+                key={s.name}
+                href={s.url}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {logo}
+              </a>
             ) : (
               <div className="sponsor-card" key={s.name}>
-                <img
-                  className="sponsor-logo"
-                  src={s.img}
-                  alt={s.name}
-                  loading="lazy"
-                />
+                {logo}
               </div>
-            ),
-          )}
+            );
+          })}
         </div>
       </section>
 

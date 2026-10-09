@@ -19,7 +19,7 @@ function Footer() {
   return (
     <footer>
       <div className="footer-grid">
-        <div>
+        <div className="footer-brand-block">
           <div className="footer-brand">
             <span>NWVSA</span>
           </div>
@@ -107,6 +107,13 @@ function Footer() {
             rel="noreferrer"
           >
             Instagram
+          </a>
+          <a
+            href="https://www.flickr.com/photos/138252133@N03/albums/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Flickr
           </a>
           <a href="mailto:northwestvsa@gmail.com">Email</a>
         </div>

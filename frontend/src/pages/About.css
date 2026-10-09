@@ -39,17 +39,27 @@
   justify-items: center;
 }
 
+/* Full school names (e.g. "University of Washington, Bothell") don't fit a
+   quarter of a phone's width — 4 columns forced the whole page to scroll
+   horizontally below ~600px. */
+@media (max-width: 600px) {
+  .schools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .school-chip {
   background: var(--white);
   border-radius: 12px;
   padding: 14px 16px;
   text-align: center;
+  text-decoration: none;
   font-size: 13px;
   color: var(--dark);
   font-weight: 400;
   border: 1px solid transparent;
   transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
-  cursor: default;
+  cursor: pointer;
   min-height: 60px;
   display: flex;
   flex-direction: column;
@@ -69,4 +79,8 @@
   color: var(--mid-gray);
   display: block;
   margin-top: 3px;
+}
+
+.school-chip:hover .school-abbr {
+  color: var(--accent);
 }

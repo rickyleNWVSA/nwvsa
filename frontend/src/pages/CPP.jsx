@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import useScrollReveal from "../hooks/useScrollReveal.js";
+import "./CPP.css";
 
 /*
  * CPP — the Collective Philanthropy Project.

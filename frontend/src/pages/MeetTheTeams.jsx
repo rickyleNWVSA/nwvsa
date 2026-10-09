@@ -3,6 +3,7 @@ import FlipBook from "../components/FlipBook/FlipBook";
 import "./MeetTheTeams.css";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
+import useMediaQuery from "../hooks/useMediaQuery.js";
 
 /*
  * MeetTheTeams — a coverflow carousel of album books.
@@ -194,7 +195,7 @@ const boards = [
   },
 ];
 
-// The Intercollegiate Council is large (14 chapters), so instead of a book it's
+// The Intercollegiate Council is large (17 chapters), so instead of a book it's
 // shown as a grid of school cards — each chapter's logo plus its reps.
 const ICC_SCHOOLS = [
   {
@@ -209,8 +210,8 @@ const ICC_SCHOOLS = [
     school: "University of Washington, Bothell",
     reps: [
       { name: "Hanson Huynh", role: "President" },
-      { name: "Millard Nguyen", role: "External Vice President" },
-      { name: "Austin Tran", role: "Internal Vice President" },
+      { name: "Millard Nguyen", role: "Internal Vice President" },
+      { name: "Austin Tran", role: "External Vice President" },
     ],
   },
   {
@@ -238,15 +239,12 @@ const ICC_SCHOOLS = [
     school: "Portland State University",
     reps: [
       { name: "Megan Nguyen", role: "Co-President" },
-      { name: "Roberto Raya", role: "Co-President" },
+      { name: "Robbie Tiên Nguyen Raya", role: "Co-President" },
     ],
   },
   {
     school: "Oregon State University",
-    reps: [
-      { name: "Tina Truong", role: "Co-President" },
-      { name: "Candice Vo", role: "Secretary" },
-    ],
+    reps: [{ name: "Tina Truong", role: "Co-President" }],
   },
   {
     school: "Pacific University",
@@ -268,7 +266,7 @@ const ICC_SCHOOLS = [
     school: "Seattle University",
     reps: [
       { name: "Elizabeth Nguyen", role: "President" },
-      { name: "Len Hsiung", role: "Vice President" },
+      { name: "Ien Hsiung", role: "Vice President" },
     ],
   },
   {
@@ -288,9 +286,8 @@ const ICC_SCHOOLS = [
   {
     school: "Washington State University, Pullman",
     reps: [
-      { name: "Phoung Bui", role: "President" },
-      { name: "Kyle Ly", role: "Internal Vice President" },
-      { name: "Emily Le", role: "Student Advisor" },
+      { name: "Phuong Bui", role: "President" },
+      { name: "Kasey Ly", role: "Internal Vice President" },
     ],
   },
   {
@@ -298,6 +295,27 @@ const ICC_SCHOOLS = [
     reps: [
       { name: "Liberty La", role: "President" },
       { name: "Sandra Ly", role: "Vice President" },
+    ],
+  },
+  {
+    school: "Washington State University, Vancouver",
+    // No officers listed yet in the chapter roster — shown as its own chapter
+    // card with no rep list rather than omitted.
+    reps: [],
+  },
+  {
+    school: "Lewis & Clark College",
+    reps: [
+      { name: "Michelle Ho", role: "President" },
+      { name: "Amy Vu", role: "Vice President" },
+    ],
+  },
+  {
+    school: "Green River College",
+    reps: [
+      { name: "Jayden Nguyen", role: "President" },
+      { name: "Tan Dung Nguyen", role: "External Vice President" },
+      { name: "Lunar Vo", role: "Internal Vice President" },
     ],
   },
 ].map((s) => ({ ...s, img: SCHOOL_IMG[s.school] || LOGO }));
@@ -340,6 +358,62 @@ function toPages(members) {
     pages.push(<TeamPage key={i} people={members.slice(i, i + PAGE_SIZE)} />);
   }
   return pages;
+}
+
+// ── Phone fallback ──
+// The 3D coverflow's center book alone (440px) is wider than a phone screen,
+// so below 640px it's replaced entirely with a pill switcher + flat list —
+// same boards, same real photos/roles, no 3D perspective math to fight.
+function TeamsMobileBoards({ boards }) {
+  const [activeId, setActiveId] = useState(boards[0].id);
+  const board = boards.find((b) => b.id === activeId) ?? boards[0];
+
+  return (
+    <div className="tm-mobile">
+      <div className="tm-pills" role="group" aria-label="Board">
+        {boards.map((b) => (
+          <button
+            key={b.id}
+            type="button"
+            className="tm-pill"
+            aria-pressed={b.id === activeId}
+            style={{ "--pill-color": b.color }}
+            onClick={() => setActiveId(b.id)}
+          >
+            {b.label}
+          </button>
+        ))}
+      </div>
+      <div className="tm-list">
+        {board.members.map((m) => {
+          const isLogo = /VSA_|nwvsa-logo/.test(m.photo);
+          return (
+            <div className="tm-member" key={m.name}>
+              <div className={`tm-photo${isLogo ? " tm-photo--logo" : ""}`}>
+                <img
+                  src={m.photo}
+                  alt=""
+                  style={
+                    m.photoPosition
+                      ? { objectPosition: m.photoPosition }
+                      : undefined
+                  }
+                />
+              </div>
+              <div className="tm-meta">
+                <div className="tm-role">{m.role}</div>
+                <div className="tm-name">{m.name}</div>
+                {m.pronouns ? (
+                  <div className="tm-pronouns">{m.pronouns}</div>
+                ) : null}
+                {m.detail ? <div className="tm-detail">{m.detail}</div> : null}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 // Signed distance from the active album, wrapped into (-n/2, n/2] so the shelf
@@ -385,6 +459,7 @@ function slotStyle(off) {
 
 export default function MeetTheTeams() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const isPhone = useMediaQuery("(max-width: 639px)");
   const n = boards.length;
   const active = boards[activeIndex];
 
@@ -409,71 +484,78 @@ export default function MeetTheTeams() {
           <div className="teams-eyebrow">Get to know us</div>
           <h1 className="teams-title">Meet the Teams</h1>
           <p className="teams-hint">
-            Use the arrows to rotate the shelf, then click the center album to
-            open it.
+            {isPhone
+              ? "Pick a board below to meet its members."
+              : "Use the arrows to rotate the shelf, then click the center album to open it."}
           </p>
         </header>
 
-        <div
-          className="tc"
-          style={{ "--book-w": `${BOOK_W}px`, "--book-h": `${BOOK_H}px` }}
-        >
-          <button
-            type="button"
-            className="tc-arrow"
-            aria-label="Previous board"
-            onClick={() => rotate(-1)}
-          >
-            ‹
-          </button>
+        {isPhone ? (
+          <TeamsMobileBoards boards={boards} />
+        ) : (
+          <>
+            <div
+              className="tc"
+              style={{ "--book-w": `${BOOK_W}px`, "--book-h": `${BOOK_H}px` }}
+            >
+              <button
+                type="button"
+                className="tc-arrow"
+                aria-label="Previous board"
+                onClick={() => rotate(-1)}
+              >
+                ‹
+              </button>
 
-          <div className="tc-viewport">
-            <div className="tc-stage">
-              {boards.map((b, i) => {
-                const off = offs[i];
-                const isCenter = off === 0;
-                const style = slotStyle(off);
-                if (wrapped[i]) style.transition = "none";
-                return (
-                  <div
-                    key={b.id}
-                    className={`tc-slot${isCenter ? " is-center" : ""}`}
-                    style={style}
-                    onClick={isCenter ? undefined : () => setActiveIndex(i)}
-                    aria-hidden={!isCenter}
-                  >
-                    <FlipBook
-                      /* remount (closed) whenever the shelf rotates */
-                      key={`${b.id}-${activeIndex}`}
-                      id={b.id}
-                      title={b.label}
-                      subtitle="NWVSA"
-                      color={b.color}
-                      logo={LOGO}
-                      width={BOOK_W}
-                      height={BOOK_H}
-                      pages={toPages(b.members)}
-                    />
-                  </div>
-                );
-              })}
+              <div className="tc-viewport">
+                <div className="tc-stage">
+                  {boards.map((b, i) => {
+                    const off = offs[i];
+                    const isCenter = off === 0;
+                    const style = slotStyle(off);
+                    if (wrapped[i]) style.transition = "none";
+                    return (
+                      <div
+                        key={b.id}
+                        className={`tc-slot${isCenter ? " is-center" : ""}`}
+                        style={style}
+                        onClick={isCenter ? undefined : () => setActiveIndex(i)}
+                        aria-hidden={!isCenter}
+                      >
+                        <FlipBook
+                          /* remount (closed) whenever the shelf rotates */
+                          key={`${b.id}-${activeIndex}`}
+                          id={b.id}
+                          title={b.label}
+                          subtitle="NWVSA"
+                          color={b.color}
+                          logo={LOGO}
+                          width={BOOK_W}
+                          height={BOOK_H}
+                          pages={toPages(b.members)}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="tc-arrow"
+                aria-label="Next board"
+                onClick={() => rotate(1)}
+              >
+                ›
+              </button>
             </div>
-          </div>
 
-          <button
-            type="button"
-            className="tc-arrow"
-            aria-label="Next board"
-            onClick={() => rotate(1)}
-          >
-            ›
-          </button>
-        </div>
-
-        <div className="tc-caption" style={{ "--dot": active.color }}>
-          <span className="tc-dot" />
-          {active.label}
-        </div>
+            <div className="tc-caption" style={{ "--dot": active.color }}>
+              <span className="tc-dot" />
+              {active.label}
+            </div>
+          </>
+        )}
 
         {/* Intercollegiate Council — chapter-forward layout echoing the
             original site: each constituent VSA led by its logo. */}

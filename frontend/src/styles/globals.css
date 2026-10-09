@@ -17,6 +17,18 @@ section {
   padding: 100px 24px;
 }
 
+/* 100px of top+bottom padding on every section stacks into huge dead space
+   between sections on a phone, where there's already less content per
+   screen. Several pages set this padding inline (style={{padding: "100px
+   24px"}}) rather than relying on this rule, so !important is needed to
+   actually win against those — same pattern already used for FlipBook's
+   --book-w override. */
+@media (max-width: 640px) {
+  section {
+    padding: 64px 20px !important;
+  }
+}
+
 .section-wrap {
   max-width: 1200px;
   margin: 0 auto;
