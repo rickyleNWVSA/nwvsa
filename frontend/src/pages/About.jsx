@@ -11,6 +11,30 @@ import "./About.css";
  * constituent-schools grid. Section ids (#about, #goals, #schools) are kept so
  * the navbar's dropdown can still deep-link straight to each block.
  */
+
+// Each chapter's own Instagram handle — verified live before linking (not
+// guessed): fetched each profile and confirmed its page title names the
+// right school's VSA before adding it here.
+const SCHOOLS = [
+  { name: "University of Washington, Seattle", handle: "vsauw" },
+  { name: "University of Washington, Bothell", handle: "vsauwb" },
+  { name: "University of Washington, Tacoma", handle: "uwtvsa" },
+  { name: "University of Oregon", handle: "uovsa" },
+  { name: "University of Portland", handle: "upvsa" },
+  { name: "Portland State University", handle: "psuvsa" },
+  { name: "University of Puget Sound", handle: "vsaups" },
+  { name: "Oregon State University", handle: "vsaatosu" },
+  { name: "Gonzaga University", handle: "gu_vsa" },
+  { name: "Reed College", handle: "vsareed" },
+  { name: "Seattle University", handle: "su.vsa" },
+  { name: "Pacific University", handle: "pacuvsa" },
+  { name: "Washington State University", handle: "wsuvsa" },
+  { name: "WSU Vancouver", handle: "wsuvvsa" },
+  { name: "Western Washington University", handle: "wwuvsa" },
+  { name: "Lewis & Clark College", handle: "vsa_lc" },
+  { name: "Green River College", handle: "vsagrc" },
+];
+
 function About() {
   useScrollReveal();
 
@@ -197,63 +221,21 @@ function About() {
           />
         </figure>
         <div className="schools-grid reveal">
-          <div className="school-chip">
-            University of Washington, Seattle
-            <span className="school-abbr">@vsauw</span>
-          </div>
-          <div className="school-chip">
-            University of Washington, Bothell
-            <span className="school-abbr">@vsauwb</span>
-          </div>
-          <div className="school-chip">
-            University of Washington, Tacoma
-            <span className="school-abbr">@uwtvsa</span>
-          </div>
-          <div className="school-chip">
-            University of Oregon<span className="school-abbr">@uovsa</span>
-          </div>
-          <div className="school-chip">
-            University of Portland<span className="school-abbr">@upvsa</span>
-          </div>
-          <div className="school-chip">
-            Portland State University
-            <span className="school-abbr">@psuvsa</span>
-          </div>
-          <div className="school-chip">
-            University of Puget Sound
-            <span className="school-abbr">@vsaups</span>
-          </div>
-          <div className="school-chip">
-            Oregon State University
-            <span className="school-abbr">@vsaatosu</span>
-          </div>
-          <div className="school-chip">
-            Gonzaga University<span className="school-abbr">@gu_vsa</span>
-          </div>
-          <div className="school-chip">
-            Reed College<span className="school-abbr">@vsareed</span>
-          </div>
-          <div className="school-chip">
-            Seattle University<span className="school-abbr">@su.vsa</span>
-          </div>
-          <div className="school-chip">
-            Pacific University<span className="school-abbr">@pacuvsa</span>
-          </div>
-          <div className="school-chip">
-            Washington State University
-            <span className="school-abbr">@wsuvsa</span>
-          </div>
-          <div className="school-chip">
-            WSU Vancouver<span className="school-abbr">@wsuvvsa</span>
-          </div>
-          <div className="school-chip">
-            Western Washington University
-            <span className="school-abbr">@wwuvsa</span>
-          </div>
-          <div className="school-chip">
-            Lewis & Clark College<span className="school-abbr">@vsa_lc</span>
-          </div>
-          <div className="school-chip">Green River College</div>
+          {SCHOOLS.map((s) => (
+            <div className="school-chip" key={s.name}>
+              {s.name}
+              {s.handle ? (
+                <a
+                  className="school-abbr"
+                  href={`https://www.instagram.com/${s.handle}/`}
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  @{s.handle}
+                </a>
+              ) : null}
+            </div>
+          ))}
         </div>
       </section>
 

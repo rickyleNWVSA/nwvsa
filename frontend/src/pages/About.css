@@ -78,4 +78,11 @@
   color: var(--mid-gray);
   display: block;
   margin-top: 3px;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.school-chip .school-abbr:hover {
+  color: var(--accent);
+  text-decoration: underline;
 }
