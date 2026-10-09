@@ -12,8 +12,8 @@ import "./Footer.css";
  *   - <Link> for plain page routes (client-side, no reload).
  *   - <a href="/path#id"> for links into a specific section of a page, so the
  *     browser does a real navigation and natively scrolls to the anchor.
- * A few labels (Constitution, Policies) have no matching page anywhere in
- * src/pages yet — they're left unlinked until those pages exist.
+ * "Policies" has no matching page anywhere in src/pages yet — left unlinked
+ * until that page exists.
  */
 function Footer() {
   return (
@@ -47,9 +47,7 @@ function Footer() {
               <Link to="/about">Mission & Values</Link>
             </li>
             <li>
-              <span className="footer-soon" title="Page coming soon">
-                Constitution
-              </span>
+              <Link to="/constitution">Constitution</Link>
             </li>
             <li>
               <span className="footer-soon" title="Page coming soon">

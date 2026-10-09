@@ -8,6 +8,7 @@ import CPP from "../pages/CPP.jsx";
 import CPPLearnMore from "../pages/CPPLearnMore.jsx";
 import Opportunities from "../pages/Opportunities.jsx";
 import Donations from "../pages/Donations.jsx";
+import Constitution from "../pages/Constitution.jsx";
 
 import AlbumCarouselDemo from "../pages/AlbumCarouselDemo.jsx";
 
@@ -35,6 +36,7 @@ function AppRoutes() {
       <Route path="/cpp/learn-more" element={<CPPLearnMore />} />
       <Route path="/opportunities" element={<Opportunities />} />
       <Route path="/donations" element={<Donations />} />
+      <Route path="/constitution" element={<Constitution />} />
 
       <Route path="/carousel-demo" element={<AlbumCarouselDemo />} />
       {/* catch-all: any unknown URL falls back to Home (put a real 404 here later) */}
