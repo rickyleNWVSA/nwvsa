@@ -39,13 +39,14 @@ function Donations() {
           flagship events, and helps build a future where Vietnamese identity
           and leadership thrive.
         </p>
-        <span
+        <a
+          href="https://buy.stripe.com/28EaEY2ECavlcQg6qq0Ny0v"
+          target="_blank"
+          rel="noreferrer"
           className="btn-gold reveal"
-          title="Coming soon — donation page in progress"
-          style={{ opacity: 0.6, cursor: "not-allowed" }}
         >
           Donate to NWVSA
-        </span>
+        </a>
       </section>
 
       {/* SPONSORS */}
