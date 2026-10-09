@@ -6,7 +6,7 @@ import { ZERO_TOLERANCE_BLOCKS, COVID_BLOCKS } from "./policiesContent.js";
 
 /*
  * Policies — NWVSA's standing policies, in full: Zero Tolerance (bullying,
- * discrimination, harassment) and the 2026 Camp Solstice COVID-19 safety
+ * discrimination, harassment) and the 2026 Flag-Ship Events COVID-19 safety
  * policy. Content is transcribed directly from the org's actual policy
  * docs — see policiesContent.js's header comment for how (and the couple of
  * purely presentational liberties taken for a web page, like turning bare
@@ -36,8 +36,7 @@ function Policies() {
           <p className="section-body reveal">
             Standards every NWVSA event and space is held to — our
             zero-tolerance policy on bullying, discrimination, and
-            harassment, and our COVID-19 safety policy for NWVSA Camp
-            Solstice.
+            harassment, and our COVID-19 safety policy for Flag-Ship events.
           </p>
         </div>
       </section>

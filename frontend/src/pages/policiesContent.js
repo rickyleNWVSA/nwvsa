@@ -159,14 +159,14 @@ export const ZERO_TOLERANCE_BLOCKS = [
 ];
 
 export const COVID_BLOCKS = [
-  { type: "heading", level: 1, text: "2026 NWVSA Camp Solstice: COVID-19 Policy" },
+  { type: "heading", level: 1, text: "2026 NWVSA Flag-Ship Events: COVID-19 Policy" },
   {
     type: "para",
     text: "Effective Date: July 1, 2026 · Last Revision: June 23, 2026",
   },
   {
     type: "para",
-    text: "On behalf of the 2026 NWVSA Camp Solstice Team and the NWVSA Executive Board: we are excited to welcome you to Mayfield, Washington, for the 2026 NWVSA Camp Solstice. The health and safety of our attendees, staff, and guests remain a priority. While we acknowledge the ever-evolving nature of the COVID-19 pandemic, we have updated our policies to reflect current circumstances and promote a responsible and inclusive environment for all participants.",
+    text: "On behalf of the 2026 NWVSA Flag-Ship Events Team and the NWVSA Executive Board: we are excited to welcome you to Mayfield, Washington, for our 2026 NWVSA Flag-Ship events. The health and safety of our attendees, staff, and guests remain a priority. While we acknowledge the ever-evolving nature of the COVID-19 pandemic, we have updated our policies to reflect current circumstances and promote a responsible and inclusive environment for all participants.",
   },
 
   { type: "heading", level: 2, text: "Safety Guidelines" },
@@ -175,7 +175,7 @@ export const COVID_BLOCKS = [
     ordered: false,
     items: [
       li("Vaccination Requirement: all attendees are required to be vaccinated against COVID-19. While we no longer require proof of vaccination to be submitted, you will be required to fill out an attestation form. Though not a requirement, it is highly recommended to receive the booster shot."),
-      li("COVID-19 Testing: NWVSA will no longer enforce mandatory COVID-19 PCR or rapid antigen testing prior to the event. We highly encourage you to test for COVID-19 prior to traveling to Camp Solstice as an added safety precaution."),
+      li("COVID-19 Testing: NWVSA will no longer enforce mandatory COVID-19 PCR or rapid antigen testing prior to the event. We highly encourage you to test for COVID-19 prior to traveling to our Flag-Ship events as an added safety precaution."),
       li("Illness Precautions: if you are feeling sick or have symptoms of any illness (including but not limited to COVID-19), please exercise proper precautions. These may include staying home, masking, and limiting contact with others to avoid spreading illness."),
       li("Masking: masking is optional and left to the discretion of each attendee. However, we highly encourage masking in indoor spaces and crowded settings for those who feel more comfortable doing so."),
     ],
@@ -199,23 +199,23 @@ export const COVID_BLOCKS = [
   { type: "heading", level: 2, text: "Liability Disclaimer" },
   {
     type: "para",
-    text: "NWVSA is not liable for any illness, including COVID-19, contracted during the 2026 NWVSA Camp Solstice. Additionally, NWVSA is not responsible for reimbursing any expenses incurred as a result of illness, inability to attend programming, or lack of preparation.",
+    text: "NWVSA is not liable for any illness, including COVID-19, contracted during the 2026 NWVSA Flag-Ship events. Additionally, NWVSA is not responsible for reimbursing any expenses incurred as a result of illness, inability to attend programming, or lack of preparation.",
   },
   {
     type: "para",
-    text: "We trust that all attendees will do their part to prioritize the health and safety of the community by following these guidelines. Thank you for your cooperation and commitment to making the 2026 NWVSA Camp Solstice a safe and enriching experience for everyone.",
+    text: "We trust that all attendees will do their part to prioritize the health and safety of the community by following these guidelines. Thank you for your cooperation and commitment to making the 2026 NWVSA Flag-Ship events a safe and enriching experience for everyone.",
   },
 
   { type: "heading", level: 1, text: "Waiver Form" },
   {
     type: "para",
-    text: "By signing this agreement relating to the event 2026 NWVSA Camp Solstice from August 28, 2026 to August 30, 2026, attendees acknowledge and agree to the following:",
+    text: "By signing this agreement relating to the 2026 NWVSA Flag-Ship events, held from August 28, 2026 to August 30, 2026, attendees acknowledge and agree to the following:",
   },
   {
     type: "list",
     ordered: true,
     items: [
-      li("I acknowledge the contagious nature of COVID-19 and voluntarily assume the risk that I may be exposed to or infected by COVID-19 by attending 2026 NWVSA Camp Solstice and that such exposure or infection may result in personal injury, illness, permanent disability, and/or death. I understand that the risk of becoming exposed to or infected by COVID-19 at 2026 NWVSA Camp Solstice may result from the actions, omissions, or negligence of myself and others, including, but not limited to, NWVSA Camp Crews, program participants and their families. By signing this, I acknowledge that we have no perfect plan to fully prevent the spread of COVID-19, and that there will always be an inherent risk with holding an in person event. The 2026 NWVSA Camp Solstice Crews will do our best to create an event that is as safe as possible."),
+      li("I acknowledge the contagious nature of COVID-19 and voluntarily assume the risk that I may be exposed to or infected by COVID-19 by attending 2026 NWVSA Flag-Ship events and that such exposure or infection may result in personal injury, illness, permanent disability, and/or death. I understand that the risk of becoming exposed to or infected by COVID-19 at 2026 NWVSA Flag-Ship events may result from the actions, omissions, or negligence of myself and others, including, but not limited to, NWVSA Camp Crews, program participants and their families. By signing this, I acknowledge that we have no perfect plan to fully prevent the spread of COVID-19, and that there will always be an inherent risk with holding an in person event. The 2026 NWVSA Flag-Ship Events Crews will do our best to create an event that is as safe as possible."),
       li("I voluntarily agree to assume all of the foregoing risks and accept sole responsibility for any injury to myself (including, but not limited to, personal injury, disability, and death), illness, damage, loss, claim, liability, or expense, of any kind, that I may experience or incur in connection with my participation in events held by or associated with NWVSA. I hereby release, covenant not to sue, discharge, and hold harmless NWVSA, its volunteers, contract workers, agents, and representatives, including all liabilities, claims, actions, damages, costs or expenses of any kind arising out of or relating thereto. I understand and agree that this release includes any claims based on the actions, omissions, or negligence of NWVSA, its volunteers, contract workers, agents, and representatives, whether a COVID-19 infection occurs before, during, or after participation held by or associated with NWVSA."),
       li("I agree that I comply with all health and safety rules and guidelines imposed by NWVSA or by any state, local, or federal governmental entity, and will practice safe social distancing and clean hygiene during my participation at events held by or associated with NWVSA."),
       li("I have had sufficient time to read this entire document prior to signing. Also, I understand that this activity might not be made available to me or that the cost to engage in this activity would be significantly greater if I were to choose not to sign this release, and agree that the opportunity to participate at the stated cost in return for the execution of this release is reasonable. I have read and understood this document and I agree to be bound by its terms."),
@@ -226,7 +226,7 @@ export const COVID_BLOCKS = [
     text: "Thank you for your time and understanding, as we continue to navigate towards creating a healthy and safe space for all. If you have any further questions, please contact the NWVSA Executive Board at eboard@nwvsa.org.",
   },
 
-  { type: "heading", level: 1, text: "2026 NWVSA Camp Solstice: COVID-19 Action Plan" },
+  { type: "heading", level: 1, text: "2026 NWVSA Flag-Ship Events: COVID-19 Action Plan" },
   {
     type: "para",
     text: "In the event that you or another NWVSA associated staff member/attendee is experiencing symptoms and suspect COVID-19 or another illness, please refer yourself or the affected staff member/attendee to the Hospitality Crew.",
@@ -235,7 +235,7 @@ export const COVID_BLOCKS = [
   { type: "heading", level: 2, text: "Step #1: Assess" },
   {
     type: "para",
-    text: "Notify the Camp Solstice Executive team of the affected individual(s)'s name, Camp Solstice family/crew and presenting issue. The Executive Team consists of Camp Master(s), Camp Captain(s) and NWVSA Executive Board members.",
+    text: "Notify the Flag-Ship Events Executive team of the affected individual(s)'s name, Flag-Ship Events family/crew and presenting issue. The Executive Team consists of Camp Master(s), Camp Captain(s) and NWVSA Executive Board members.",
   },
   {
     type: "para",
@@ -260,7 +260,7 @@ export const COVID_BLOCKS = [
   { type: "heading", level: 2, text: "Step #2: Intervene" },
   {
     type: "para",
-    text: "Through assessment and consultation of appropriate personnel, the Hospitality Crew may perform a rapid antigen COVID-19 test with the participant's consent. In the event that the affected individual(s) does not consent to a rapid antigen COVID test despite a reasonably suspected COVID-19 infection, please notify the Camp Solstice Executive team and NWVSA Executive Board.",
+    text: "Through assessment and consultation of appropriate personnel, the Hospitality Crew may perform a rapid antigen COVID-19 test with the participant's consent. In the event that the affected individual(s) does not consent to a rapid antigen COVID test despite a reasonably suspected COVID-19 infection, please notify the Flag-Ship Events Executive team and NWVSA Executive Board.",
   },
 
   { type: "heading", level: 3, text: "Testing Positive" },
@@ -272,7 +272,7 @@ export const COVID_BLOCKS = [
     type: "list",
     ordered: true,
     items: [
-      li("Update the Camp Solstice Executive team and NWVSA Executive Board on the situation."),
+      li("Update the Flag-Ship Events Executive team and NWVSA Executive Board on the situation."),
       li("Provide masks for the affected individual(s)."),
       li("Quarantine the affected individual(s) in an appropriate site until further notice (med tent, cabin, etc.)."),
       li("Coordinate with the Executive team and NWVSA Executive Board to coordinate infection control and reach out to the individual's emergency contact(s) to pick up the affected individual(s) from the site."),
