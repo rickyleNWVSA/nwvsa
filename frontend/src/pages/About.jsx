@@ -170,7 +170,7 @@ function About() {
             className="section-title"
             style={{ margin: "0 auto", textAlign: "center" }}
           >
-            18 schools, <em>one family</em>
+            17 schools, <em>one family</em>
           </h2>
           <p
             style={{
@@ -253,6 +253,7 @@ function About() {
           <div className="school-chip">
             Lewis & Clark College<span className="school-abbr">@vsa_lc</span>
           </div>
+          <div className="school-chip">Green River College</div>
         </div>
       </section>
 

@@ -195,7 +195,7 @@ const boards = [
   },
 ];
 
-// The Intercollegiate Council is large (14 chapters), so instead of a book it's
+// The Intercollegiate Council is large (17 chapters), so instead of a book it's
 // shown as a grid of school cards — each chapter's logo plus its reps.
 const ICC_SCHOOLS = [
   {
@@ -210,8 +210,8 @@ const ICC_SCHOOLS = [
     school: "University of Washington, Bothell",
     reps: [
       { name: "Hanson Huynh", role: "President" },
-      { name: "Millard Nguyen", role: "External Vice President" },
-      { name: "Austin Tran", role: "Internal Vice President" },
+      { name: "Millard Nguyen", role: "Internal Vice President" },
+      { name: "Austin Tran", role: "External Vice President" },
     ],
   },
   {
@@ -219,6 +219,10 @@ const ICC_SCHOOLS = [
     reps: [
       { name: "Chauhan Nguyen", role: "President" },
       { name: "Katie Le", role: "Vice President" },
+      { name: "Xai Sok", role: "Media Coordinator" },
+      { name: "Lynn Le", role: "Secretary" },
+      { name: "John Huang", role: "Treasurer" },
+      { name: "Eddi Lu", role: "Event Coordinator" },
     ],
   },
   {
@@ -239,7 +243,7 @@ const ICC_SCHOOLS = [
     school: "Portland State University",
     reps: [
       { name: "Megan Nguyen", role: "Co-President" },
-      { name: "Roberto Raya", role: "Co-President" },
+      { name: "Robbie Tiên Nguyen Raya", role: "Co-President" },
     ],
   },
   {
@@ -269,7 +273,7 @@ const ICC_SCHOOLS = [
     school: "Seattle University",
     reps: [
       { name: "Elizabeth Nguyen", role: "President" },
-      { name: "Len Hsiung", role: "Vice President" },
+      { name: "Ien Hsiung", role: "Vice President" },
     ],
   },
   {
@@ -289,8 +293,8 @@ const ICC_SCHOOLS = [
   {
     school: "Washington State University, Pullman",
     reps: [
-      { name: "Phoung Bui", role: "President" },
-      { name: "Kyle Ly", role: "Internal Vice President" },
+      { name: "Phuong Bui", role: "President" },
+      { name: "Kasey Ly", role: "Internal Vice President" },
       { name: "Emily Le", role: "Student Advisor" },
     ],
   },
@@ -299,6 +303,27 @@ const ICC_SCHOOLS = [
     reps: [
       { name: "Liberty La", role: "President" },
       { name: "Sandra Ly", role: "Vice President" },
+    ],
+  },
+  {
+    school: "Washington State University, Vancouver",
+    // No officers listed yet in the chapter roster — shown as its own chapter
+    // card with no rep list rather than omitted.
+    reps: [],
+  },
+  {
+    school: "Lewis & Clark College",
+    reps: [
+      { name: "Michelle Ho", role: "President" },
+      { name: "Amy Vu", role: "Vice President" },
+    ],
+  },
+  {
+    school: "Green River College",
+    reps: [
+      { name: "Jayden Nguyen", role: "President" },
+      { name: "Tan Dung Nguyen", role: "External Vice President" },
+      { name: "Lunar Vo", role: "Internal Vice President" },
     ],
   },
 ].map((s) => ({ ...s, img: SCHOOL_IMG[s.school] || LOGO }));
