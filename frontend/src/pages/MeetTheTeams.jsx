@@ -2,6 +2,7 @@ import { useState, useRef, useEffect } from "react";
 import FlipBook from "../components/FlipBook/FlipBook";
 import "./MeetTheTeams.css";
 import Navbar from "../components/Navbar/Navbar.jsx";
+import Footer from "../components/Footer/Footer.jsx";
 
 /*
  * MeetTheTeams — a coverflow carousel of album books.
@@ -47,13 +48,16 @@ const SCHOOL_IMG = {
 };
 
 // Helper: build a Board of Directors member with their real headshot; the
-// director's school is shown as the detail line.
-const bod = (name, pronouns, school, file) => ({
+// director's school is shown as the detail line. `position` optionally
+// overrides the photo's crop focus (CSS object-position) for headshots that
+// get cropped too tight by the default center crop.
+const bod = (name, pronouns, school, file, position) => ({
   name,
   role: "Director",
   pronouns,
   detail: school,
   photo: `/images/Headshots/BOD/${file}`,
+  photoPosition: position,
 });
 
 const boards = [
@@ -66,7 +70,7 @@ const boards = [
         name: "An Ho",
         role: "President",
         pronouns: "He/Him/His",
-        photo: "/images/Headshots/Eboard/An%20Ho%20Headshot.jpg",
+        photo: "/images/Headshots/Eboard/An%20Ho%20Headshot%20(Cropped).jpg",
       },
       {
         name: "Vinh Nguyenpham",
@@ -85,6 +89,7 @@ const boards = [
         role: "Secretary",
         pronouns: "She/Her/Hers",
         photo: "/images/Headshots/Eboard/Connie%20Nguyen%20Headshot.JPEG",
+        photoPosition: "center 0%",
       },
       {
         name: "Truc Tran",
@@ -171,6 +176,7 @@ const boards = [
         "He/Him/His",
         "University of Washington, Seattle",
         "Nghia-Nguyen-Hope-400x600.webp",
+        "center 20%",
       ),
       bod(
         "Kristi Dang",
@@ -296,13 +302,17 @@ const ICC_SCHOOLS = [
   },
 ].map((s) => ({ ...s, img: SCHOOL_IMG[s.school] || LOGO }));
 
-function TeamCard({ name, role, photo, pronouns, detail }) {
+function TeamCard({ name, role, photo, pronouns, detail, photoPosition }) {
   // School / org logos are "contained" (never cropped); real headshots fill.
   const isLogo = /VSA_|nwvsa-logo/.test(photo);
   return (
     <div className="team-card">
       <div className={`team-photo${isLogo ? " team-photo--logo" : ""}`}>
-        <img src={photo} alt="" />
+        <img
+          src={photo}
+          alt=""
+          style={photoPosition ? { objectPosition: photoPosition } : undefined}
+        />
       </div>
       <div className="team-role">{role}</div>
       <h3 className="team-name">{name}</h3>
@@ -498,6 +508,8 @@ export default function MeetTheTeams() {
           </div>
         </section>
       </main>
+
+      <Footer />
     </>
   );
 }

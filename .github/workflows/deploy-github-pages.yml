@@ -1,0 +1,45 @@
+name: Deploy dev preview to GitHub Pages
+
+# Builds the frontend and publishes it to the separate rickyleNWVSA.github.io
+# repo, which GitHub serves at https://rickyleNWVSA.github.io/ with no
+# subpath. This is a dev/preview mirror only — production lives on
+# northwestvsa.com (IntraServer), deployed separately by uploading
+# frontend/dist/ there by hand. See README.md for both.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch: {}
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        working-directory: frontend
+        run: npm ci
+
+      - name: Build
+        working-directory: frontend
+        run: npm run build
+
+      - name: Deploy to rickyleNWVSA.github.io
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          personal_token: ${{ secrets.PAGES_DEPLOY_TOKEN }}
+          external_repository: rickyleNWVSA/rickyleNWVSA.github.io
+          publish_branch: main
+          publish_dir: frontend/dist
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+          commit_message: "Deploy ${{ github.sha }}"

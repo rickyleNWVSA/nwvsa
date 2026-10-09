@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import useScrollReveal from "../hooks/useScrollReveal.js";
@@ -39,15 +40,17 @@ const BENEFICIARIES = [
     year: "2025–2026",
     name: "Vietnam Assistance for the Handicapped (VNAH)",
     desc: "Supporting vocational rehabilitation and training for children with disabilities through a café/canteen model in Ho Chi Minh City.",
-    img: "/images/unnamed-3.webp",
-    alt: "VNAH recipients riding hand-powered mobility tricycles",
+    img: "/images/Sponsorships/VNANH-Logo.png",
+    alt: "VNAH logo",
+    logo: true,
   },
   {
     year: "2024–2025",
     name: "Vietnam Health Clinic",
     desc: "Expanding mobile health services for communities across rural Central Vietnam.",
-    img: "/images/unnamed-2.webp",
-    alt: "A Vietnam Health Clinic volunteer providing care",
+    img: "/images/Sponsorships/VietnamHealthClinic.png",
+    alt: "Vietnam Health Clinic logo",
+    logo: true,
   },
   {
     year: "2023–2024",
@@ -87,15 +90,13 @@ function CPP() {
                 awareness, funds, and lasting support.
               </p>
               <div style={{ marginTop: "36px" }}>
-                <a
-                  href="https://northwestvsa.com/cpp/"
-                  target="_blank"
-                  rel="noreferrer"
+                <Link
+                  to="/cpp/learn-more"
                   className="btn-primary"
                   style={{ fontSize: "14px", padding: "12px 28px" }}
                 >
                   Learn More →
-                </a>
+                </Link>
               </div>
               <div
                 style={{
@@ -150,7 +151,7 @@ function CPP() {
             Four steps of <em>collective giving</em>
           </h2>
         </div>
-        <div className="goals-grid reveal">
+        <div className="goals-grid goals-grid--2x2 reveal">
           {COMPONENTS.map((c) => (
             <div className="goal-card" key={c.title}>
               <h3 className="goal-title">{c.title}</h3>

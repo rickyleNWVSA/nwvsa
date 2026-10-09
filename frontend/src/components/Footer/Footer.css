@@ -55,6 +55,13 @@ footer {
 
 .footer-col a:hover { color: var(--accent); }
 
+/* Labels with no matching internal page yet (see Footer.jsx comment) */
+.footer-col .footer-soon {
+  font-size: 14px;
+  color: rgba(255,255,255,0.3);
+  cursor: default;
+}
+
 .footer-bottom {
   max-width: 1100px;
   margin: 0 auto;

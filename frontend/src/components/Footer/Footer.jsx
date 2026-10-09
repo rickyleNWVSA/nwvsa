@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import "./Footer.css";
 
 /*
@@ -6,6 +7,13 @@ import "./Footer.css";
  * This used to be hard-coded at the bottom of Home.jsx. It was extracted into a
  * shared component so it can sit at the bottom of EVERY page and stay identical
  * everywhere — edit it once here and all pages update.
+ *
+ * Link types, matching the convention in Navbar.jsx:
+ *   - <Link> for plain page routes (client-side, no reload).
+ *   - <a href="/path#id"> for links into a specific section of a page, so the
+ *     browser does a real navigation and natively scrolls to the anchor.
+ * A few labels (Constitution, Policies) have no matching page anywhere in
+ * src/pages yet — they're left unlinked until those pages exist.
  */
 function Footer() {
   return (
@@ -21,14 +29,14 @@ function Footer() {
           </p>
           <div style={{ marginTop: "20px" }}>
             <a
-              href="mailto:northwestvsa@gmail.com"
+              href="mailto:eboard@nwvsa.org"
               style={{
                 color: "var(--accent)",
                 fontSize: "14px",
                 textDecoration: "none",
               }}
             >
-              northwestvsa@gmail.com
+              eboard@nwvsa.org
             </a>
           </div>
         </div>
@@ -36,40 +44,20 @@ function Footer() {
           <h4>Organization</h4>
           <ul>
             <li>
-              <a
-                href="https://northwestvsa.com/our-misson-values/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Mission & Values
-              </a>
+              <Link to="/about">Mission & Values</Link>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/constitution/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <span className="footer-soon" title="Page coming soon">
                 Constitution
-              </a>
+              </span>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/policies/"
-                target="_blank"
-                rel="noreferrer"
-              >
+              <span className="footer-soon" title="Page coming soon">
                 Policies
-              </a>
+              </span>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/contact-us/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Contact Us
-              </a>
+              <a href="mailto:eboard@nwvsa.org">Contact Us</a>
             </li>
           </ul>
         </div>
@@ -77,40 +65,16 @@ function Footer() {
           <h4>Meet the Team</h4>
           <ul>
             <li>
-              <a
-                href="https://northwestvsa.com/executive-board/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Executive Board
-              </a>
+              <a href="/teams#executive">Executive Board</a>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/cabinet-board-corr/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Cabinet Board
-              </a>
+              <a href="/teams#cabinet">Cabinet Board</a>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/board-of-directors/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Board of Directors
-              </a>
+              <a href="/teams#directors">Board of Directors</a>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/intercollegiate-council/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                ICC
-              </a>
+              <Link to="/teams">ICC</Link>
             </li>
           </ul>
         </div>
@@ -118,40 +82,16 @@ function Footer() {
           <h4>Get Involved</h4>
           <ul>
             <li>
-              <a
-                href="https://northwestvsa.com/events/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Events
-              </a>
+              <Link to="/events">Events</Link>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/cpp/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                CPP Program
-              </a>
+              <Link to="/cpp">CPP Program</Link>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/opportunities/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Opportunities
-              </a>
+              <Link to="/opportunities">Opportunities</Link>
             </li>
             <li>
-              <a
-                href="https://northwestvsa.com/donations-2/"
-                target="_blank"
-                rel="noreferrer"
-              >
-                Donate
-              </a>
+              <Link to="/donations">Donate</Link>
             </li>
           </ul>
         </div>

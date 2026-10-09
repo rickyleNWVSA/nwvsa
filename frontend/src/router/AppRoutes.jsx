@@ -4,6 +4,7 @@ import MeetTheTeams from "../pages/MeetTheTeams.jsx";
 import About from "../pages/About.jsx";
 import Events from "../pages/Events.jsx";
 import CPP from "../pages/CPP.jsx";
+import CPPLearnMore from "../pages/CPPLearnMore.jsx";
 import Opportunities from "../pages/Opportunities.jsx";
 import Donations from "../pages/Donations.jsx";
 
@@ -28,6 +29,7 @@ function AppRoutes() {
       <Route path="/about" element={<About />} />
       <Route path="/events" element={<Events />} />
       <Route path="/cpp" element={<CPP />} />
+      <Route path="/cpp/learn-more" element={<CPPLearnMore />} />
       <Route path="/opportunities" element={<Opportunities />} />
       <Route path="/donations" element={<Donations />} />
 
