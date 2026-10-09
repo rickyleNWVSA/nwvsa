@@ -222,19 +222,16 @@ function About() {
         </figure>
         <div className="schools-grid reveal">
           {SCHOOLS.map((s) => (
-            <div className="school-chip" key={s.name}>
+            <a
+              className="school-chip"
+              key={s.name}
+              href={`https://www.instagram.com/${s.handle}/`}
+              target="_blank"
+              rel="noreferrer"
+            >
               {s.name}
-              {s.handle ? (
-                <a
-                  className="school-abbr"
-                  href={`https://www.instagram.com/${s.handle}/`}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  @{s.handle}
-                </a>
-              ) : null}
-            </div>
+              <span className="school-abbr">@{s.handle}</span>
+            </a>
           ))}
         </div>
       </section>
