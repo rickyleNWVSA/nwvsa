@@ -39,6 +39,15 @@
   justify-items: center;
 }
 
+/* Full school names (e.g. "University of Washington, Bothell") don't fit a
+   quarter of a phone's width — 4 columns forced the whole page to scroll
+   horizontally below ~600px. */
+@media (max-width: 600px) {
+  .schools-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 .school-chip {
   background: var(--white);
   border-radius: 12px;

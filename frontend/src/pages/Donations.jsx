@@ -35,10 +35,9 @@ function Donations() {
           Help us <em>empower</em> the next generation
         </h2>
         <p className="donate-sub reveal">
-          Your donation directly fuels our core mission of promoting culture and
-          civic engagement — sponsoring students to attend critical leadership
-          camps and funding our flagship events. Together, we can create a future
-          where Vietnamese identity and leadership thrive.
+          Your donation sponsors students at leadership camps, funds our
+          flagship events, and helps build a future where Vietnamese identity
+          and leadership thrive.
         </p>
         <span
           className="btn-gold reveal"

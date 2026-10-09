@@ -19,7 +19,7 @@ function Footer() {
   return (
     <footer>
       <div className="footer-grid">
-        <div>
+        <div className="footer-brand-block">
           <div className="footer-brand">
             <span>NWVSA</span>
           </div>
