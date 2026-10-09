@@ -108,6 +108,13 @@ function Footer() {
           >
             Instagram
           </a>
+          <a
+            href="https://www.flickr.com/photos/138252133@N03/albums/"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Flickr
+          </a>
           <a href="mailto:northwestvsa@gmail.com">Email</a>
         </div>
       </div>
