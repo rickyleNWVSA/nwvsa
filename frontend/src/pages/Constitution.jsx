@@ -1,8 +1,8 @@
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
 import useScrollReveal from "../hooks/useScrollReveal.js";
+import { renderDocBlock } from "../components/LegalDocument/LegalDocument.jsx";
 import CONSTITUTION_BLOCKS from "./constitutionContent.js";
-import "./Constitution.css";
 
 /*
  * Constitution — NWVSA's governing document, in full.
@@ -13,7 +13,8 @@ import "./Constitution.css";
  * was rebuilt from the doc's real indentation (margin-left per item) instead
  * — see that file's extraction notes. Two photos from the NWVSA Flickr
  * (2025 Leadership Summit) break up the long read; none of the doc's own
- * embedded images are reused here.
+ * embedded images are reused here. Rendering (doc-article/doc-list/etc.) is
+ * shared with Policies.jsx via components/LegalDocument.
  *
  * The source document's Articles jump from III straight to V (no IV, likely
  * a leftover from a past amendment that was never renumbered) — renumbered
@@ -24,87 +25,7 @@ import "./Constitution.css";
 
 // Insert the second photo right before this heading, as a breather partway
 // through the document (first photo sits in the intro).
-const SECOND_PHOTO_BEFORE = "ARTICLE IX - Amendments";
-
-function ConstitutionList({ block }) {
-  const Tag = block.ordered ? "ol" : "ul";
-  return (
-    <Tag className={`constitution-list${block.ordered ? "" : " is-unordered"}`}>
-      {block.items.map((item, i) => (
-        <li key={i}>
-          {item.text}
-          {item.children.map((child, j) => (
-            <ConstitutionList key={j} block={child} />
-          ))}
-        </li>
-      ))}
-    </Tag>
-  );
-}
-
-function ConstitutionTable({ block }) {
-  const [header, ...rows] = block.rows;
-  return (
-    <div className="constitution-table-wrap">
-      <table className="constitution-table">
-        <thead>
-          <tr>
-            {header.map((cell, i) => (
-              <th key={i}>{cell}</th>
-            ))}
-          </tr>
-        </thead>
-        <tbody>
-          {rows.map((row, i) => (
-            <tr key={i}>
-              {row.map((cell, j) => (
-                <td key={j}>{cell}</td>
-              ))}
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
-}
-
-function renderBlock(block, key) {
-  switch (block.type) {
-    case "heading":
-      if (block.level === 1) {
-        return (
-          <h2 className="constitution-article" key={key}>
-            {block.text}
-          </h2>
-        );
-      }
-      if (block.level === 2) {
-        return (
-          <h3 className="constitution-section" key={key}>
-            {block.text}
-          </h3>
-        );
-      }
-      return (
-        <h4 className="constitution-office" key={key}>
-          {block.text}
-        </h4>
-      );
-    case "para":
-      return (
-        <p className="constitution-p" key={key}>
-          {block.text}
-        </p>
-      );
-    case "list":
-      return <ConstitutionList block={block} key={key} />;
-    case "table":
-      return <ConstitutionTable block={block} key={key} />;
-    case "divider":
-    default:
-      return null;
-  }
-}
+const SECOND_PHOTO_BEFORE = "ARTICLE VIII - Amendments";
 
 function Constitution() {
   useScrollReveal();
@@ -127,8 +48,8 @@ function Constitution() {
         </div>
       </section>
 
-      <article className="constitution-body">
-        <figure className="constitution-figure reveal" style={{ marginTop: 0 }}>
+      <article className="doc-body">
+        <figure className="doc-figure reveal" style={{ marginTop: 0 }}>
           <img
             src="/images/NWVSA_Summit2025_Photo1.jpg"
             alt="NWVSA members on stage together at the 2025 Leadership Summit"
@@ -141,7 +62,7 @@ function Constitution() {
           const nodes = [];
           if (block.type === "heading" && block.level === 1 && block.text === SECOND_PHOTO_BEFORE) {
             nodes.push(
-              <figure className="constitution-figure reveal" key={`${i}-photo`}>
+              <figure className="doc-figure reveal" key={`${i}-photo`}>
                 <img
                   src="/images/NWVSA_Summit2025_Photo2.jpg"
                   alt="NWVSA members celebrating together at the 2025 Leadership Summit"
@@ -151,7 +72,7 @@ function Constitution() {
               </figure>,
             );
           }
-          nodes.push(renderBlock(block, i));
+          nodes.push(renderDocBlock(block, i));
           return nodes;
         })}
       </article>
