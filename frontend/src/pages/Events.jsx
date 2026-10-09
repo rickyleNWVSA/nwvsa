@@ -7,7 +7,50 @@ import useScrollReveal from "../hooks/useScrollReveal.js";
  *
  * Content mirrors northwestvsa.com/events: the upcoming NWVSA Camp 2026 (theme
  * "Camp Solstice: Moments in Orbit") plus the annual Turkey Bowl tradition.
+ *
+ * Past Events below are sourced from NWVSA's internal past-events doc (names,
+ * EDs/Campmasters, locations, themes), each paired with one representative
+ * photo from that event's own Flickr album — picked for a wide, in-the-room
+ * group shot to match the style of the two cards above. Per instructions, an
+ * event only gets a card if a correlating Flickr album with usable photos
+ * was actually found; none were skipped here, but that's why this list
+ * isn't just "every past event NWVSA has ever run."
  */
+const PAST_EVENTS = [
+  {
+    tag: "2025 Summit",
+    title: "NWVSA Summit 2025: Ribbon of Flavors",
+    desc: "Hosted in Portland, OR, led by Executive Directors Kathy Vuu and Angel Le.",
+    img: "/images/NWVSA_Summit2025_PastEvent.jpg",
+    alt: "NWVSA members at the 2025 Summit in Portland",
+    location: "Portland, OR",
+  },
+  {
+    tag: "2024 Camp",
+    title: "NWVSA Camp 2024: Yesterday's Memories, Tomorrow's Journeys",
+    desc: "Hosted in Mossyrock, WA, led by Campmasters Kevin Le and William Ho.",
+    img: "/images/NWVSA_Camp2024_PastEvent.jpg",
+    alt: "NWVSA members gathered at the 2024 Leadership Camp",
+    location: "Mossyrock, WA",
+  },
+  {
+    tag: "2023 Summit",
+    title: "NWVSA Summit 2023: Rekindling Our Roots",
+    desc: "Hosted in Bellevue, WA, led by Executive Directors Nghia Nguyen and Kristi Dang.",
+    img: "/images/NWVSA_Summit2023_PastEvent.jpg",
+    alt: "NWVSA members at the 2023 Summit in Bellevue",
+    location: "Bellevue, WA",
+  },
+  {
+    tag: "2022 Camp",
+    title: "NWVSA Camp 2022: Everlasting Waves of Legacy",
+    desc: "Hosted in Olympia, WA, led by Executive Directors Johnny Ho and Christina Tang.",
+    img: "/images/NWVSA_Camp2022_PastEvent.jpg",
+    alt: "NWVSA members outdoors at the 2022 Leadership Camp",
+    location: "Olympia, WA",
+  },
+];
+
 function Events() {
   useScrollReveal();
 
@@ -94,6 +137,48 @@ function Events() {
                 </svg>
               </div>
             </div>
+          </div>
+        </div>
+
+        {/* Past events */}
+        <div
+          className="reveal"
+          style={{ maxWidth: "1100px", margin: "72px auto 0" }}
+        >
+          <div className="section-eyebrow" style={{ textAlign: "center" }}>
+            Where We've Been
+          </div>
+          <h3
+            className="section-title"
+            style={{
+              fontSize: "clamp(24px, 3vw, 34px)",
+              textAlign: "center",
+              margin: "0 auto 32px",
+            }}
+          >
+            Past <em>Events</em>
+          </h3>
+          <div className="events-grid events-grid--2x2">
+            {PAST_EVENTS.map((e) => (
+              <div className="event-card" key={e.tag}>
+                <img
+                  className="event-photo"
+                  src={e.img}
+                  alt={e.alt}
+                  loading="lazy"
+                />
+                <div className="event-card-top">
+                  <span className="event-tag">{e.tag}</span>
+                  <h3 className="event-title">{e.title}</h3>
+                  <p className="event-desc">{e.desc}</p>
+                </div>
+                <div className="event-card-bottom">
+                  <span style={{ fontSize: "13px", color: "var(--mid-gray)" }}>
+                    {e.location}
+                  </span>
+                </div>
+              </div>
+            ))}
           </div>
         </div>
 
