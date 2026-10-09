@@ -3,6 +3,7 @@ import FlipBook from "../components/FlipBook/FlipBook";
 import "./MeetTheTeams.css";
 import Navbar from "../components/Navbar/Navbar.jsx";
 import Footer from "../components/Footer/Footer.jsx";
+import useMediaQuery from "../hooks/useMediaQuery.js";
 
 /*
  * MeetTheTeams — a coverflow carousel of album books.
@@ -342,6 +343,62 @@ function toPages(members) {
   return pages;
 }
 
+// ── Phone fallback ──
+// The 3D coverflow's center book alone (440px) is wider than a phone screen,
+// so below 640px it's replaced entirely with a pill switcher + flat list —
+// same boards, same real photos/roles, no 3D perspective math to fight.
+function TeamsMobileBoards({ boards }) {
+  const [activeId, setActiveId] = useState(boards[0].id);
+  const board = boards.find((b) => b.id === activeId) ?? boards[0];
+
+  return (
+    <div className="tm-mobile">
+      <div className="tm-pills" role="group" aria-label="Board">
+        {boards.map((b) => (
+          <button
+            key={b.id}
+            type="button"
+            className="tm-pill"
+            aria-pressed={b.id === activeId}
+            style={{ "--pill-color": b.color }}
+            onClick={() => setActiveId(b.id)}
+          >
+            {b.label}
+          </button>
+        ))}
+      </div>
+      <div className="tm-list">
+        {board.members.map((m) => {
+          const isLogo = /VSA_|nwvsa-logo/.test(m.photo);
+          return (
+            <div className="tm-member" key={m.name}>
+              <div className={`tm-photo${isLogo ? " tm-photo--logo" : ""}`}>
+                <img
+                  src={m.photo}
+                  alt=""
+                  style={
+                    m.photoPosition
+                      ? { objectPosition: m.photoPosition }
+                      : undefined
+                  }
+                />
+              </div>
+              <div className="tm-meta">
+                <div className="tm-role">{m.role}</div>
+                <div className="tm-name">{m.name}</div>
+                {m.pronouns ? (
+                  <div className="tm-pronouns">{m.pronouns}</div>
+                ) : null}
+                {m.detail ? <div className="tm-detail">{m.detail}</div> : null}
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
+}
+
 // Signed distance from the active album, wrapped into (-n/2, n/2] so the shelf
 // loops. 0 = center, ±1 = the two side albums, |off| ≥ 2 = tucked out of sight.
 function relOffset(i, active, n) {
@@ -385,6 +442,7 @@ function slotStyle(off) {
 
 export default function MeetTheTeams() {
   const [activeIndex, setActiveIndex] = useState(0);
+  const isPhone = useMediaQuery("(max-width: 639px)");
   const n = boards.length;
   const active = boards[activeIndex];
 
@@ -409,71 +467,78 @@ export default function MeetTheTeams() {
           <div className="teams-eyebrow">Get to know us</div>
           <h1 className="teams-title">Meet the Teams</h1>
           <p className="teams-hint">
-            Use the arrows to rotate the shelf, then click the center album to
-            open it.
+            {isPhone
+              ? "Pick a board below to meet its members."
+              : "Use the arrows to rotate the shelf, then click the center album to open it."}
           </p>
         </header>
 
-        <div
-          className="tc"
-          style={{ "--book-w": `${BOOK_W}px`, "--book-h": `${BOOK_H}px` }}
-        >
-          <button
-            type="button"
-            className="tc-arrow"
-            aria-label="Previous board"
-            onClick={() => rotate(-1)}
-          >
-            ‹
-          </button>
+        {isPhone ? (
+          <TeamsMobileBoards boards={boards} />
+        ) : (
+          <>
+            <div
+              className="tc"
+              style={{ "--book-w": `${BOOK_W}px`, "--book-h": `${BOOK_H}px` }}
+            >
+              <button
+                type="button"
+                className="tc-arrow"
+                aria-label="Previous board"
+                onClick={() => rotate(-1)}
+              >
+                ‹
+              </button>
 
-          <div className="tc-viewport">
-            <div className="tc-stage">
-              {boards.map((b, i) => {
-                const off = offs[i];
-                const isCenter = off === 0;
-                const style = slotStyle(off);
-                if (wrapped[i]) style.transition = "none";
-                return (
-                  <div
-                    key={b.id}
-                    className={`tc-slot${isCenter ? " is-center" : ""}`}
-                    style={style}
-                    onClick={isCenter ? undefined : () => setActiveIndex(i)}
-                    aria-hidden={!isCenter}
-                  >
-                    <FlipBook
-                      /* remount (closed) whenever the shelf rotates */
-                      key={`${b.id}-${activeIndex}`}
-                      id={b.id}
-                      title={b.label}
-                      subtitle="NWVSA"
-                      color={b.color}
-                      logo={LOGO}
-                      width={BOOK_W}
-                      height={BOOK_H}
-                      pages={toPages(b.members)}
-                    />
-                  </div>
-                );
-              })}
+              <div className="tc-viewport">
+                <div className="tc-stage">
+                  {boards.map((b, i) => {
+                    const off = offs[i];
+                    const isCenter = off === 0;
+                    const style = slotStyle(off);
+                    if (wrapped[i]) style.transition = "none";
+                    return (
+                      <div
+                        key={b.id}
+                        className={`tc-slot${isCenter ? " is-center" : ""}`}
+                        style={style}
+                        onClick={isCenter ? undefined : () => setActiveIndex(i)}
+                        aria-hidden={!isCenter}
+                      >
+                        <FlipBook
+                          /* remount (closed) whenever the shelf rotates */
+                          key={`${b.id}-${activeIndex}`}
+                          id={b.id}
+                          title={b.label}
+                          subtitle="NWVSA"
+                          color={b.color}
+                          logo={LOGO}
+                          width={BOOK_W}
+                          height={BOOK_H}
+                          pages={toPages(b.members)}
+                        />
+                      </div>
+                    );
+                  })}
+                </div>
+              </div>
+
+              <button
+                type="button"
+                className="tc-arrow"
+                aria-label="Next board"
+                onClick={() => rotate(1)}
+              >
+                ›
+              </button>
             </div>
-          </div>
 
-          <button
-            type="button"
-            className="tc-arrow"
-            aria-label="Next board"
-            onClick={() => rotate(1)}
-          >
-            ›
-          </button>
-        </div>
-
-        <div className="tc-caption" style={{ "--dot": active.color }}>
-          <span className="tc-dot" />
-          {active.label}
-        </div>
+            <div className="tc-caption" style={{ "--dot": active.color }}>
+              <span className="tc-dot" />
+              {active.label}
+            </div>
+          </>
+        )}
 
         {/* Intercollegiate Council — chapter-forward layout echoing the
             original site: each constituent VSA led by its logo. */}
