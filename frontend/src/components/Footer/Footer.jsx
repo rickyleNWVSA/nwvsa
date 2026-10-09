@@ -97,9 +97,20 @@ function Footer() {
         </div>
       </div>
       <div className="footer-bottom">
-        <span>
-          © 2026 Northwest Vietnamese Student Association. All rights reserved.
-        </span>
+        <div className="footer-legal">
+          <span>
+            © 2026 Northwest Vietnamese Student Association. All rights
+            reserved.
+          </span>
+          <a
+            className="footer-powered-by"
+            href="https://www.interserver.net"
+            target="_blank"
+            rel="noreferrer"
+          >
+            Powered by InterServer
+          </a>
+        </div>
         <div className="footer-social">
           <a
             href="https://www.instagram.com/nwvsa"
