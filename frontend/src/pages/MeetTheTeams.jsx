@@ -219,10 +219,6 @@ const ICC_SCHOOLS = [
     reps: [
       { name: "Chauhan Nguyen", role: "President" },
       { name: "Katie Le", role: "Vice President" },
-      { name: "Xai Sok", role: "Media Coordinator" },
-      { name: "Lynn Le", role: "Secretary" },
-      { name: "John Huang", role: "Treasurer" },
-      { name: "Eddi Lu", role: "Event Coordinator" },
     ],
   },
   {
@@ -248,10 +244,7 @@ const ICC_SCHOOLS = [
   },
   {
     school: "Oregon State University",
-    reps: [
-      { name: "Tina Truong", role: "Co-President" },
-      { name: "Candice Vo", role: "Secretary" },
-    ],
+    reps: [{ name: "Tina Truong", role: "Co-President" }],
   },
   {
     school: "Pacific University",
@@ -295,7 +288,6 @@ const ICC_SCHOOLS = [
     reps: [
       { name: "Phuong Bui", role: "President" },
       { name: "Kasey Ly", role: "Internal Vice President" },
-      { name: "Emily Le", role: "Student Advisor" },
     ],
   },
   {
