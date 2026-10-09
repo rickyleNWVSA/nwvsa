@@ -14,14 +14,17 @@ import "./Navbar.css";
  *     purpose so the browser navigates to the page and natively scrolls to the
  *     hash target.
  *
- * Below 900px, .nav-links has no room to fit inline (six links + logo + CTA
- * need ~830px+), so a burger button reveals the same links in a full-width
- * dropdown instead. Every page mounts its own <Navbar/>, so `open` naturally
- * resets to closed on each navigation — no extra effect needed for that.
+ * Below 1100px, .nav-links has no room to fit inline (eight links + logo +
+ * CTA need ~1090px+ before wrapping), so a burger button reveals the same
+ * links in a full-width dropdown instead. Every page mounts its own
+ * <Navbar/>, so `open` naturally resets to closed on each navigation — no
+ * extra effect needed for that.
  */
 
 const NAV_LINKS = [
   { to: "/about", label: "About" },
+  { to: "/constitution", label: "Constitution" },
+  { to: "/policies", label: "Policies" },
   { to: "/events", label: "Events" },
   { to: "/cpp", label: "CPP" },
   { to: "/opportunities", label: "Opportunities" },
