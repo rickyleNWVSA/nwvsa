@@ -1,4 +1,5 @@
 import { Routes, Route } from "react-router-dom";
+import useScrollToTop from "../hooks/useScrollToTop.js";
 import Home from "../pages/Home.jsx";
 import MeetTheTeams from "../pages/MeetTheTeams.jsx";
 import About from "../pages/About.jsx";
@@ -22,6 +23,8 @@ import AlbumCarouselDemo from "../pages/AlbumCarouselDemo.jsx";
  *   2. add a <Route path="/your-path" element={<YourPage />} />
  */
 function AppRoutes() {
+  useScrollToTop();
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
