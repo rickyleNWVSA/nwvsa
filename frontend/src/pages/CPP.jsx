@@ -36,6 +36,7 @@ const COMPONENTS = [
 
 // Beneficiary organizations by cycle (most recent first). `logo: true` means
 // the image is a brand mark (contained on white) rather than a program photo.
+// Each card links out to the organization's own site.
 const BENEFICIARIES = [
   {
     year: "2025–2026",
@@ -44,6 +45,8 @@ const BENEFICIARIES = [
     img: "/images/Sponsorships/VNANH-Logo.png",
     alt: "VNAH logo",
     logo: true,
+    link: "https://www.vnah-hev.org/",
+    linkLabel: "vnah-hev.org",
   },
   {
     year: "2024–2025",
@@ -52,6 +55,8 @@ const BENEFICIARIES = [
     img: "/images/Sponsorships/VietnamHealthClinic.png",
     alt: "Vietnam Health Clinic logo",
     logo: true,
+    link: "https://vnhealthclinic.org",
+    linkLabel: "vnhealthclinic.org",
   },
   {
     year: "2023–2024",
@@ -60,6 +65,8 @@ const BENEFICIARIES = [
     img: "/images/00RPSLogo1_Small-1024x571-1-400x223.webp",
     alt: "Rock-Paper-Scissors Children's Fund logo",
     logo: true,
+    link: "https://rockpaperscissorschildrensfund.org",
+    linkLabel: "rockpaperscissorschildrensfund.org",
   },
 ];
 
@@ -186,7 +193,13 @@ function CPP() {
         </div>
         <div className="events-grid reveal">
           {BENEFICIARIES.map((b) => (
-            <div className="event-card" key={b.year}>
+            <a
+              className="event-card"
+              href={b.link}
+              target="_blank"
+              rel="noreferrer"
+              key={b.year}
+            >
               <img
                 className={`event-photo${b.logo ? " event-photo--logo" : ""}`}
                 src={b.img}
@@ -198,7 +211,17 @@ function CPP() {
                 <h3 className="event-title">{b.name}</h3>
                 <p className="event-desc">{b.desc}</p>
               </div>
-            </div>
+              <div className="event-card-bottom">
+                <span style={{ fontSize: "13px", color: "var(--mid-gray)" }}>
+                  {b.linkLabel}
+                </span>
+                <div className="event-arrow">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M5 12h14M12 5l7 7-7 7" />
+                  </svg>
+                </div>
+              </div>
+            </a>
           ))}
         </div>
       </section>
