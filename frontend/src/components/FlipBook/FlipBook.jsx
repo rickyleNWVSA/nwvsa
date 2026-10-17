@@ -21,6 +21,9 @@ import './FlipBook.css'
  *               FlipBooks on one screen (e.g. inside a carousel).
  *  - title / subtitle : text on the front cover.
  *  - color    : cover base color (a gradient is derived from it).
+ *  - accentColor : page-flip ("next page") button color. Defaults to the
+ *               site's near-black so covers that don't specify one keep the
+ *               original look.
  *  - width / height   : book size in px (drives leaves + open-cover offset).
  *  - pages    : a flat array of React nodes. Two consecutive entries become the
  *               front and back of one physical leaf.
@@ -30,6 +33,7 @@ export default function FlipBook({
   title = 'Meet the Teams',
   subtitle = 'NWVSA',
   color = '#dc143c',
+  accentColor = '#1d1d1f',
   logo = null,
   width = 380,
   height = 580,
@@ -87,6 +91,7 @@ export default function FlipBook({
         '--book-w': `${width}px`,
         '--book-h': `${height}px`,
         '--cover-color': color,
+        '--accent-color': accentColor,
       }}
     >
       {/* generated stacking/flip/cover rules, scoped to this instance */}

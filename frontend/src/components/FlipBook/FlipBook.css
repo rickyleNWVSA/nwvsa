@@ -211,7 +211,7 @@
   height: 38px;
   border-radius: 50%;
   border: none;
-  background: var(--dark, #1d1d1f);
+  background: var(--accent-color, var(--dark, #1d1d1f));
   color: #fff;
   font-size: 17px;
   line-height: 1;
