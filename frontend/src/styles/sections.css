@@ -208,6 +208,10 @@
   margin: 0 auto;
 }
 
+.events-grid--2x2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
 .event-card {
   display: block;
   border-radius: 20px;
