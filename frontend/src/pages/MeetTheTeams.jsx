@@ -65,7 +65,8 @@ const boards = [
   {
     id: "executive",
     label: "Executive Board",
-    color: "#dc143c", // crimson
+    color: "#1d1d1f", // black
+    accentColor: "#38761d", // site green, for the page-flip button
     members: [
       {
         name: "An Ho",
@@ -103,7 +104,7 @@ const boards = [
   {
     id: "cabinet",
     label: "Cabinet Board",
-    color: "#2a9d8f", // teal
+    color: "#38761d", // site green
     members: [
       {
         name: "Baylee Do",
@@ -146,7 +147,8 @@ const boards = [
   {
     id: "directors",
     label: "Board of Directors",
-    color: "#6a4c93", // purple
+    color: "#6b4423", // oak brown
+    accentColor: "#38761d", // site green, for the page-flip button
     members: [
       bod(
         "Teresa Do",
@@ -529,6 +531,7 @@ export default function MeetTheTeams() {
                           title={b.label}
                           subtitle="NWVSA"
                           color={b.color}
+                          accentColor={b.accentColor}
                           logo={LOGO}
                           width={BOOK_W}
                           height={BOOK_H}
