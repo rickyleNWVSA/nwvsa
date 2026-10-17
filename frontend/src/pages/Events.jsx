@@ -9,20 +9,19 @@ import useScrollReveal from "../hooks/useScrollReveal.js";
  * "Camp Solstice: Moments in Orbit") plus the annual Turkey Bowl tradition.
  *
  * Past Events below are sourced from NWVSA's internal past-events doc (names,
- * EDs/Campmasters, locations, themes), each paired with one representative
- * photo from that event's own Flickr album — picked for a wide, in-the-room
- * group shot to match the style of the two cards above. Per instructions, an
- * event only gets a card if a correlating Flickr album with usable photos
- * was actually found; none were skipped here, but that's why this list
- * isn't just "every past event NWVSA has ever run."
+ * EDs/Campmasters, locations, themes), each paired with that event's formal
+ * whole-cohort group + banner photo, matching the style of the homepage
+ * hero. Per instructions, an event only gets a card if a correlating Flickr
+ * album with usable photos was actually found; none were skipped here, but
+ * that's why this list isn't just "every past event NWVSA has ever run."
  */
 const PAST_EVENTS = [
   {
     tag: "2025 Summit",
     title: "NWVSA Summit 2025: Ribbon of Flavors",
     desc: "Hosted in Portland, OR, led by Executive Directors Kathy Vuu and Angel Le.",
-    img: "/images/NWVSA_Summit2025_PastEvent.jpg",
-    alt: "NWVSA members at the 2025 Summit in Portland",
+    img: "/images/NWVSA_Homepage2025_Photo.jpg",
+    alt: "NWVSA members posed together as a full group at the 2025 Summit in Portland",
     location: "Portland, OR",
   },
   {
@@ -30,7 +29,7 @@ const PAST_EVENTS = [
     title: "NWVSA Camp 2024: Yesterday's Memories, Tomorrow's Journeys",
     desc: "Hosted in Mossyrock, WA, led by Campmasters Kevin Le and William Ho.",
     img: "/images/NWVSA_Camp2024_PastEvent.jpg",
-    alt: "NWVSA members gathered at the 2024 Leadership Camp",
+    alt: "NWVSA members posed together as a full group outside the lodge at the 2024 Leadership Camp",
     location: "Mossyrock, WA",
   },
   {
@@ -38,7 +37,7 @@ const PAST_EVENTS = [
     title: "NWVSA Summit 2023: Rekindling Our Roots",
     desc: "Hosted in Bellevue, WA, led by Executive Directors Nghia Nguyen and Kristi Dang.",
     img: "/images/NWVSA_Summit2023_PastEvent.jpg",
-    alt: "NWVSA members at the 2023 Summit in Bellevue",
+    alt: "NWVSA members posed together as a full group at the 2023 Summit in Bellevue",
     location: "Bellevue, WA",
   },
   {
@@ -46,7 +45,7 @@ const PAST_EVENTS = [
     title: "NWVSA Camp 2022: Everlasting Waves of Legacy",
     desc: "Hosted in Olympia, WA, led by Executive Directors Johnny Ho and Christina Tang.",
     img: "/images/NWVSA_Camp2022_PastEvent.jpg",
-    alt: "NWVSA members outdoors at the 2022 Leadership Camp",
+    alt: "NWVSA members posed together as a full group outdoors at the 2022 Leadership Camp",
     location: "Olympia, WA",
   },
 ];
