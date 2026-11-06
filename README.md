@@ -44,7 +44,7 @@ build.
 ### Dev preview on GitHub Pages
 
 Every push to `main` automatically builds and deploys to
-**https://rickyleNWVSA.github.io/** via
+**https://NWVSA.github.io/** via
 `.github/workflows/deploy-github-pages.yml`. This is a preview mirror only —
 production is `northwestvsa.com`, deployed separately as described above.
 
