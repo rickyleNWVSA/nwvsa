@@ -55,7 +55,7 @@ throughout this codebase.
 
 One-time setup (already done if this section still exists, but documented
 for reference):
-1. Create an empty public repo named exactly `rickyleNWVSA.github.io`.
+1. Create an empty public repo named exactly `NWVSA.github.io`.
 2. Create a fine-grained GitHub PAT scoped to just that repo with
    **Contents: Read and write**.
 3. Add it as a repository secret named `PAGES_DEPLOY_TOKEN` on this
