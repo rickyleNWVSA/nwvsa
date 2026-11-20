@@ -1,0 +1,165 @@
+/* Opportunities page — clickable role cards, role-details modal, apply CTA. */
+
+/* Role cards are <button>s (they open a modal, not a link), so undo the
+   browser's default button styling to match the shared .event-card look. */
+.role-card {
+  width: 100%;
+  padding: 0;
+  font: inherit;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.role-card:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* ── Position groups (Cabinet, Event, …) ── */
+.role-group {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+.role-group + .role-group {
+  margin-top: 56px;
+}
+
+.role-group-title {
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--dark);
+  padding-bottom: 14px;
+  margin-bottom: 24px;
+  border-bottom: 1px solid var(--light-gray);
+}
+
+.role-group-empty {
+  padding: 36px 32px;
+  border-radius: 20px;
+  border: 1px dashed var(--light-gray);
+  background: var(--off-white);
+  text-align: center;
+  font-size: 15px;
+  font-weight: 300;
+  color: var(--mid-gray);
+}
+
+.opportunities-apply {
+  text-align: center;
+  margin-top: 56px;
+}
+.opportunities-apply-buttons {
+  display: flex;
+  gap: 16px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+/* ── Role details modal (native <dialog>) ── */
+.role-modal {
+  border: none;
+  border-radius: 24px;
+  padding: 0;
+  width: min(640px, calc(100% - 32px));
+  max-height: calc(100vh - 64px);
+  margin: auto;
+  background: var(--white);
+  color: var(--dark);
+  box-shadow: 0 30px 80px rgba(0, 0, 0, 0.2);
+}
+.role-modal::backdrop {
+  background: rgba(29, 29, 31, 0.55);
+}
+/* Keep the page from scrolling behind the open modal. */
+body:has(.role-modal[open]) {
+  overflow: hidden;
+}
+
+.role-modal-content {
+  position: relative;
+  padding: 48px 40px 40px;
+}
+
+.role-modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border: none;
+  border-radius: 50%;
+  background: var(--off-white);
+  color: var(--dark);
+  font-size: 22px;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.role-modal-close:hover {
+  background: var(--dark);
+  color: var(--white);
+}
+
+.role-modal-title {
+  font-family: var(--font-display);
+  font-size: 34px;
+  font-weight: 400;
+  line-height: 1.2;
+  margin-top: 8px;
+}
+
+.role-modal-heading {
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  font-weight: 600;
+  color: var(--accent);
+  margin-top: 28px;
+  margin-bottom: 10px;
+}
+
+.role-modal-text,
+.role-modal-list {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--mid-gray);
+  font-weight: 300;
+}
+
+.role-modal-list {
+  padding-left: 20px;
+  list-style: disc;
+}
+.role-modal-list li + li {
+  margin-top: 6px;
+}
+
+.role-modal-note {
+  margin-top: 24px;
+  padding: 14px 18px;
+  border-radius: 14px;
+  background: var(--off-white);
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--dark);
+}
+
+.role-modal-soon {
+  margin-top: 20px;
+}
+
+.role-modal-actions {
+  margin-top: 32px;
+}
+
+@media (max-width: 600px) {
+  .role-modal-content {
+    padding: 44px 24px 28px;
+  }
+  .role-modal-title {
+    font-size: 28px;
+  }
+}
